@@ -5,11 +5,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import view.GamePanel;
 
+import java.io.File;
+
 
 public class Player extends Entity {
     public static final int SPRITE_COUNTER_NUMBER = 16;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
     private String direction;
+    public static final String RES_URL = "file:res" + File.separator + "player";
     KeyHandler keyH;
 
     public Player(GamePanel g, KeyHandler keyH) {
@@ -24,6 +27,10 @@ public class Player extends Entity {
         this.setY(this.getGamePanel().SCREEN_HEIGHT / 2);
         this.setSpeed(4);
         direction = "down";
+    }
+
+    public static String getURL(String ImageName) {
+        return RES_URL + File.separator + ImageName;
     }
 
     public void update() {
@@ -97,13 +104,13 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
         int imageSize = this.getGamePanel().TILE_SIZE;
-        up1 = new Image("/boy_up_1.png", imageSize, imageSize, false, false);
-        up2 = new Image("/boy_up_2.png", imageSize, imageSize, false, false);
-        down1 = new Image("/boy_down_1.png", imageSize, imageSize, false, false);
-        down2 = new Image("/boy_down_2.png", imageSize, imageSize, false, false);
-        left1 = new Image("/boy_left_1.png", imageSize, imageSize, false, false);
-        left2 = new Image("/boy_left_2.png", imageSize, imageSize, false, false);
-        right1 = new Image("/boy_right_1.png", imageSize, imageSize, false, false);
-        right2 = new Image("/boy_right_2.png", imageSize, imageSize, false, false);
+        up1 = new Image(getURL("boy_up_1.png"), imageSize, imageSize, false, false);
+        up2 = new Image(getURL("boy_up_2.png"), imageSize, imageSize, false, false);
+        down1 = new Image(getURL("boy_down_1.png"), imageSize, imageSize, false, false);
+        down2 = new Image(getURL("boy_down_2.png"), imageSize, imageSize, false, false);
+        left1 = new Image(getURL("boy_left_1.png"), imageSize, imageSize, false, false);
+        left2 = new Image(getURL("boy_left_2.png"), imageSize, imageSize, false, false);
+        right1 = new Image(getURL("boy_right_1.png"), imageSize, imageSize, false, false);
+        right2 = new Image(getURL("boy_right_2.png"), imageSize, imageSize, false, false);
     }
 }
