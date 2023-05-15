@@ -1,11 +1,16 @@
 package view;
 
 import abstraction.Entity;
+import abstraction.Map;
 import abstraction.Player;
 import controller.KeyHandler;
+import controller.TileManager;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class GamePanel extends Canvas implements Runnable {
@@ -18,14 +23,19 @@ public class GamePanel extends Canvas implements Runnable {
     public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COLUMN; // 48*16 = 768 px
     public static final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // 48*12 = 576 px
     public static final int FPS = 60;
+    public static final int SIZE_MAP=20;
+    public static final String TILE_URL = "file:res" + File.separator + "map";
 
     Thread gameThread;
     KeyHandler keyH;
     private Entity player;
+    //private Map map;
+    TileManager tileM = new TileManager(this);
 
-    public GamePanel(KeyHandler keyH) {
+    public GamePanel(KeyHandler keyH) throws IOException {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.player = new Player(this, keyH);
+        //this.map=new Map(this);
     }
 
     public void startGameThread() {
@@ -41,7 +51,11 @@ public class GamePanel extends Canvas implements Runnable {
             // Update information such as character position
             update();
             // Draw the screen with the updated information
-            draw(this.getGraphicsContext2D());
+            try {
+                draw(this.getGraphicsContext2D());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             try {
                 double remainingTime = nextDrawTime - System.nanoTime();
@@ -58,14 +72,16 @@ public class GamePanel extends Canvas implements Runnable {
                 e.printStackTrace();
             }
         }
+
     }
 
     public void update() {
         player.update();
     }
 
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc) throws IOException {
         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        tileM.draw(gc);
         player.draw(gc);
         gc.stroke();
     }
