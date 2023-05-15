@@ -17,6 +17,8 @@ public class GamePanel extends Canvas implements Runnable {
     public static final int MAX_SCREEN_ROW = 12;
     public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COLUMN; // 48*16 = 768 px
     public static final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // 48*12 = 576 px
+
+    // FPS
     public static final int FPS = 60;
 
     Thread gameThread;

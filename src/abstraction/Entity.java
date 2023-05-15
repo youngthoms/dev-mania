@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import view.GamePanel;
 
 public abstract class Entity {
-    private int x, y, speed, life, strength;
+    private int worldX, worldY, speed, life, strength;
     private GamePanel gp;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
@@ -25,13 +25,20 @@ public abstract class Entity {
         this.gp = g;
     }
 
-    public int getX() {
-        return x;
+    public void setWorldX(int worldX) {
+        this.worldX = worldX;
     }
 
+    public void setWorldY(int worldY) {
+        this.worldY = worldY;
+    }
 
-    public int getY() {
-        return y;
+    public int getWorldX() {
+        return worldX;
+    }
+
+    public int getWorldY() {
+        return worldY;
     }
 
     public void setSpriteCounter(int spriteCounter) {
@@ -54,35 +61,25 @@ public abstract class Entity {
         this.speed = speed;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public void moveUp() {
-        this.setY(this.getY() - this.getSpeed());
+        this.setWorldY(this.getWorldY() - this.getSpeed());
     }
 
     public void moveDown() {
-        this.setY(this.getY() + this.getSpeed());
+        this.setWorldY(this.getWorldY() + this.getSpeed());
     }
 
     public void moveLeft() {
-        this.setX(this.getX() - this.getSpeed());
+        this.setWorldX(this.getWorldX() - this.getSpeed());
     }
 
     public void moveRight() {
-        this.setX(this.getX() + this.getSpeed());
+        this.setWorldX(this.getWorldX() + this.getSpeed());
     }
 
     public void update() {
     }
 
     public void draw(GraphicsContext gc) {
-        gc.setFill(Color.BLACK);
-        gc.fillRect(this.getX(), this.getY(), this.getGamePanel().TILE_SIZE, this.getGamePanel().TILE_SIZE);
     }
 }

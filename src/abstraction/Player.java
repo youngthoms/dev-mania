@@ -7,8 +7,11 @@ import view.GamePanel;
 
 import java.io.File;
 
+import static view.GamePanel.*;
+
 
 public class Player extends Entity {
+    private int screenX, screenY;
     public static final int SPRITE_COUNTER_NUMBER = 16;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
     private String direction;
@@ -18,13 +21,33 @@ public class Player extends Entity {
     public Player(GamePanel g, KeyHandler keyH) {
         super(g);
         this.keyH = keyH;
+
+        this.setScreenX(this.getGamePanel().SCREEN_WIDTH / 2);
+        this.setScreenY(this.getGamePanel().SCREEN_HEIGHT / 2);
+
         this.setDefaultValues();
         this.getPlayerImage();
     }
 
+    public int getScreenX() {
+        return screenX;
+    }
+
+    public int getScreenY() {
+        return screenY;
+    }
+
+    public void setScreenX(int screenX) {
+        this.screenX = screenX;
+    }
+
+    public void setScreenY(int screenY) {
+        this.screenY = screenY;
+    }
+
     public void setDefaultValues() {
-        this.setX(this.getGamePanel().SCREEN_WIDTH / 2);
-        this.setY(this.getGamePanel().SCREEN_HEIGHT / 2);
+        this.setWorldX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
+        this.setWorldY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
         this.setSpeed(4);
         direction = "down";
     }
@@ -99,18 +122,17 @@ public class Player extends Entity {
                 break;
         }
 
-        gc.drawImage(image, this.getX(), this.getY());
+        gc.drawImage(image, this.getScreenX(), this.getScreenY());
     }
 
     public void getPlayerImage() {
-        int imageSize = this.getGamePanel().TILE_SIZE;
-        up1 = new Image(getURL("boy_up_1.png"), imageSize, imageSize, false, false);
-        up2 = new Image(getURL("boy_up_2.png"), imageSize, imageSize, false, false);
-        down1 = new Image(getURL("boy_down_1.png"), imageSize, imageSize, false, false);
-        down2 = new Image(getURL("boy_down_2.png"), imageSize, imageSize, false, false);
-        left1 = new Image(getURL("boy_left_1.png"), imageSize, imageSize, false, false);
-        left2 = new Image(getURL("boy_left_2.png"), imageSize, imageSize, false, false);
-        right1 = new Image(getURL("boy_right_1.png"), imageSize, imageSize, false, false);
-        right2 = new Image(getURL("boy_right_2.png"), imageSize, imageSize, false, false);
+        up1 = new Image(getURL("boy_up_1.png"), TILE_SIZE, TILE_SIZE, false, false);
+        up2 = new Image(getURL("boy_up_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        down1 = new Image(getURL("boy_down_1.png"), TILE_SIZE, TILE_SIZE, false, false);
+        down2 = new Image(getURL("boy_down_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        left1 = new Image(getURL("boy_left_1.png"), TILE_SIZE, TILE_SIZE, false, false);
+        left2 = new Image(getURL("boy_left_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        right1 = new Image(getURL("boy_right_1.png"), TILE_SIZE, TILE_SIZE, false, false);
+        right2 = new Image(getURL("boy_right_2.png"), TILE_SIZE, TILE_SIZE, false, false);
     }
 }
