@@ -2,6 +2,7 @@ package view;
 
 import abstraction.Entity;
 import abstraction.Player;
+import abstraction.TileManager;
 import controller.KeyHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,6 +22,7 @@ public class GamePanel extends Canvas implements Runnable {
     // FPS
     public static final int FPS = 60;
 
+    TileManager tileManager = new TileManager(this);
     Thread gameThread;
     KeyHandler keyH;
     private Entity player;
@@ -68,6 +70,7 @@ public class GamePanel extends Canvas implements Runnable {
 
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        tileManager.draw(gc);
         player.draw(gc);
         gc.stroke();
     }
