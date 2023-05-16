@@ -9,6 +9,7 @@ import controller.KeyHandler;
 import controller.ObjectColisionChecker;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 
 public class GamePanel extends Canvas implements Runnable {
@@ -33,14 +34,15 @@ public class GamePanel extends Canvas implements Runnable {
     TileManager tileManager = new TileManager(this);
     private Collision collisionChecker;
     Thread gameThread;
-    KeyHandler keyH;
+    private KeyHandler keyH;
     private Player player;
     private ObjectColisionChecker colisionObject;
     public SuperObject object[] = new SuperObject[10];
     public AssetSetter assetSetter = new AssetSetter(this);
 
-    public GamePanel(KeyHandler keyH) {
+    public GamePanel() {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
+        this.keyH = new KeyHandler();
         this.player = new Player(this, keyH);
         this.collisionChecker = new Collision(this);
         this.colisionObject = new ObjectColisionChecker(this);
@@ -52,6 +54,10 @@ public class GamePanel extends Canvas implements Runnable {
 
     public TileManager getTileManager() {
         return tileManager;
+    }
+
+    public KeyHandler getKeyH() {
+        return keyH;
     }
 
     public void startGameThread() {
@@ -104,7 +110,6 @@ public class GamePanel extends Canvas implements Runnable {
             }
         }
         player.draw(gc);
-        gc.stroke();
     }
 
     public void setUpGame() {
