@@ -1,11 +1,10 @@
 package view;
 
-import abstraction.Entity;
 import abstraction.Player;
+import abstraction.TileManager;
 import controller.KeyHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 
 public class GamePanel extends Canvas implements Runnable {
@@ -17,15 +16,28 @@ public class GamePanel extends Canvas implements Runnable {
     public static final int MAX_SCREEN_ROW = 12;
     public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COLUMN; // 48*16 = 768 px
     public static final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // 48*12 = 576 px
-    public static final int FPS = 60;
 
+    // WORLD SETTINGS
+    public static final int MAX_WORLD_COLUMN = 50;
+    public static final int MAX_WORLD_ROW = 50;
+    public static final int WORLD_WIDTH = TILE_SIZE * MAX_WORLD_COLUMN;
+    public static final int WORLD_HEIGHT = TILE_SIZE * MAX_WORLD_ROW;
+
+    // FPS
+    public static final int FPS = 30;
+
+    TileManager tileManager = new TileManager(this);
     Thread gameThread;
     KeyHandler keyH;
-    private Entity player;
+    private Player player;
 
     public GamePanel(KeyHandler keyH) {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.player = new Player(this, keyH);
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public void startGameThread() {
@@ -66,6 +78,7 @@ public class GamePanel extends Canvas implements Runnable {
 
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        tileManager.draw(gc);
         player.draw(gc);
         gc.stroke();
     }
