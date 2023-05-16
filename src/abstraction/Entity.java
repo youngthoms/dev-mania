@@ -107,18 +107,22 @@ public abstract class Entity {
 
     public void moveUp() {
         this.setWorldY(this.getWorldY() - this.getSpeed());
+        System.out.printf("Up  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public void moveDown() {
         this.setWorldY(this.getWorldY() + this.getSpeed());
+        System.out.printf("Down  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public void moveLeft() {
         this.setWorldX(this.getWorldX() - this.getSpeed());
+        System.out.printf("Left  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public void moveRight() {
         this.setWorldX(this.getWorldX() + this.getSpeed());
+        System.out.printf("Right  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public void update() {
