@@ -16,9 +16,9 @@ public class TileManager {
     public TileManager(GamePanel gp) {
         this.gp = gp;
         this.tile = new Tile[10];
-        this.mapTileNum = new int[MAX_SCREEN_COLUMN][MAX_SCREEN_ROW];
+        this.mapTileNum = new int[MAX_WORLD_COLUMN][MAX_WORLD_ROW];
         this.getTileImage();
-        this.loadMap("res/map/map.csv");
+        this.loadMap("res/map/world.csv");
     }
 
     public void getTileImage() {
@@ -30,21 +30,30 @@ public class TileManager {
 
         tile[2] = new Tile();
         tile[2].setImage(new Image("file:res/map/water.png", TILE_SIZE, TILE_SIZE, false, false));
+
+        tile[3] = new Tile();
+        tile[3].setImage(new Image("file:res/map/earth.png", TILE_SIZE, TILE_SIZE, false, false));
+
+        tile[4] = new Tile();
+        tile[4].setImage(new Image("file:res/map/tree.png", TILE_SIZE, TILE_SIZE, false, false));
+
+        tile[5] = new Tile();
+        tile[5].setImage(new Image("file:res/map/sand.png", TILE_SIZE, TILE_SIZE, false, false));
     }
 
     public void loadMap(String filePath) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             int col = 0, row = 0;
-            while (col < MAX_SCREEN_COLUMN && row < MAX_SCREEN_ROW) {
-                String line = br.readLine();
-                while (col < MAX_SCREEN_COLUMN) {
+            String line;
+            while (col < MAX_WORLD_COLUMN && row < MAX_WORLD_ROW && (line = br.readLine()) != null) {
+                while (col < MAX_WORLD_COLUMN) {
                     String numbers[] = line.split(",");
                     int num = Integer.parseInt(numbers[col]);
                     this.mapTileNum[col][row] = num;
                     col++;
                 }
-                if (col == MAX_SCREEN_COLUMN) {
+                if (col == MAX_WORLD_COLUMN) {
                     col = 0;
                     row++;
                 }
@@ -57,21 +66,22 @@ public class TileManager {
     }
 
     public void draw(GraphicsContext gc) {
-        int col = 0, row = 0, x = 0, y = 0;
+        int worldCol = 0, worldRow = 0;
 
-        while (col < MAX_SCREEN_COLUMN && row < MAX_SCREEN_ROW) {
+        while (worldCol < MAX_WORLD_COLUMN && worldRow < MAX_WORLD_ROW) {
 
-            int tileNum = this.mapTileNum[col][row];
+            int tileNum = this.mapTileNum[worldCol][worldRow];
 
-            gc.drawImage(this.tile[tileNum].getImage(), x, y, TILE_SIZE, TILE_SIZE);
-            col++;
-            x += TILE_SIZE;
+            int worldX = worldCol * TILE_SIZE;
+            int worldY = worldRow * TILE_SIZE;
+            int screenX = worldX - this.gp.getPlayer().getWorldX() + this.gp.getPlayer().getScreenX();
+            int screenY = worldY - this.gp.getPlayer().getWorldY() + this.gp.getPlayer().getScreenY();
+            gc.drawImage(this.tile[tileNum].getImage(), screenX, screenY, TILE_SIZE, TILE_SIZE);
+            worldCol++;
 
-            if (col == MAX_SCREEN_COLUMN) {
-                col = 0;
-                x = 0;
-                row++;
-                y += TILE_SIZE;
+            if (worldCol == MAX_WORLD_COLUMN) {
+                worldCol = 0;
+                worldRow++;
             }
         }
     }

@@ -22,8 +22,8 @@ public class Player extends Entity {
         super(g);
         this.keyH = keyH;
 
-        this.setScreenX(this.getGamePanel().SCREEN_WIDTH / 2);
-        this.setScreenY(this.getGamePanel().SCREEN_HEIGHT / 2);
+        this.setScreenX(SCREEN_WIDTH / 2);
+        this.setScreenY(SCREEN_HEIGHT / 2);
 
         this.setDefaultValues();
         this.getPlayerImage();
@@ -48,7 +48,7 @@ public class Player extends Entity {
     public void setDefaultValues() {
         this.setWorldX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
         this.setWorldY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
-        this.setSpeed(4);
+        this.setSpeed(7);
         direction = "down";
     }
 
