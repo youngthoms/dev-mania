@@ -173,14 +173,14 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
-        up1 = new Image(getURL("boy_up_1.png"), TILE_SIZE, TILE_SIZE, false, false);
-        up2 = new Image(getURL("boy_up_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        down1 = new Image(getURL("boy_down_1.png"), TILE_SIZE, TILE_SIZE, false, false);
-        down2 = new Image(getURL("boy_down_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        left1 = new Image(getURL("boy_left_1.png"), TILE_SIZE, TILE_SIZE, false, false);
-        left2 = new Image(getURL("boy_left_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        right1 = new Image(getURL("boy_right_1.png"), TILE_SIZE, TILE_SIZE, false, false);
-        right2 = new Image(getURL("boy_right_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        up1 = new Image(getURL("boy_up_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        up2 = new Image(getURL("boy_up_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        down1 = new Image(getURL("boy_down_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        down2 = new Image(getURL("boy_down_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        left1 = new Image(getURL("boy_left_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        left2 = new Image(getURL("boy_left_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        right1 = new Image(getURL("boy_right_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        right2 = new Image(getURL("boy_right_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
     }
 
     public int getHasKey() {
