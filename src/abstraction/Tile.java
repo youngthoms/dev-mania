@@ -13,4 +13,13 @@ public class Tile {
     public Image getImage() {
         return image;
     }
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    public void setAsObstacle() {
+        this.collision = true;
+    }
+
 }

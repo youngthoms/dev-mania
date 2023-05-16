@@ -1,6 +1,7 @@
 package abstraction;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.shape.Rectangle;
 import view.GamePanel;
 
 public abstract class Entity {
@@ -8,6 +9,9 @@ public abstract class Entity {
     private GamePanel gp;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
+    private Rectangle hitbox;
+    private String direction;
+    private boolean collisionOn = false;
 
     public int getSpriteCounter() {
         return spriteCounter;
@@ -18,6 +22,10 @@ public abstract class Entity {
     }
 
     public void getPlayerImage() {
+    }
+
+    public Rectangle getHitbox() {
+        return hitbox;
     }
 
     public Entity(GamePanel g) {
@@ -32,12 +40,24 @@ public abstract class Entity {
         this.worldY = worldY;
     }
 
+    public void setHitbox(Rectangle hitbox) {
+        this.hitbox = hitbox;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
     public int getWorldX() {
         return worldX;
     }
 
     public int getWorldY() {
         return worldY;
+    }
+
+    public String getDirection() {
+        return direction;
     }
 
     public void setSpriteCounter(int spriteCounter) {
@@ -56,8 +76,16 @@ public abstract class Entity {
         return speed;
     }
 
+    public boolean getCollisionOn() {
+        return collisionOn;
+    }
+
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public void setCollisionOn(boolean collisionOn) {
+        this.collisionOn = collisionOn;
     }
 
     public void moveUp() {

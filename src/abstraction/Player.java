@@ -3,6 +3,7 @@ package abstraction;
 import controller.KeyHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 import view.GamePanel;
 
 import java.io.File;
@@ -12,9 +13,8 @@ import static view.GamePanel.*;
 
 public class Player extends Entity {
     private int screenX, screenY;
-    public static final int SPRITE_COUNTER_NUMBER = 16;
+    public static final int SPRITE_COUNTER_NUMBER = 9;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
-    private String direction;
     public static final String RES_URL = "file:res" + File.separator + "player";
     KeyHandler keyH;
 
@@ -22,8 +22,10 @@ public class Player extends Entity {
         super(g);
         this.keyH = keyH;
 
-        this.setScreenX(SCREEN_WIDTH / 2);
-        this.setScreenY(SCREEN_HEIGHT / 2);
+        this.setScreenX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
+        this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
+
+        this.setHitbox(new Rectangle(8, 16, 32, 32));
 
         this.setDefaultValues();
         this.getPlayerImage();
@@ -46,10 +48,10 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        this.setWorldX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
-        this.setWorldY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
-        this.setSpeed(7);
-        direction = "down";
+        this.setWorldX(TILE_SIZE * 23);
+        this.setWorldY(TILE_SIZE * 20);
+        this.setSpeed(5);
+        this.setDirection("down");
     }
 
     public static String getURL(String ImageName) {
@@ -57,19 +59,38 @@ public class Player extends Entity {
     }
 
     public void update() {
+        String direction = this.getDirection();
         if (keyH.up || keyH.down || keyH.left || keyH.right) {
             if (keyH.up) {
-                direction = "up";
-                this.moveUp();
+                this.setDirection("up");
             } else if (keyH.down) {
-                direction = "down";
-                this.moveDown();
+                this.setDirection("down");
             } else if (keyH.left) {
-                direction = "left";
-                this.moveLeft();
+                this.setDirection("left");
             } else if (keyH.right) {
-                direction = "right";
-                this.moveRight();
+                this.setDirection("right");
+            }
+
+            // Check tile collision
+            this.setCollisionOn(false);
+            this.getGamePanel().getCollisionChecker().checkTile(this);
+
+            // If collision is false, player can move
+            if (this.getCollisionOn() == false) {
+                switch (direction) {
+                    case "up":
+                        this.moveUp();
+                        break;
+                    case "down":
+                        this.moveDown();
+                        break;
+                    case "left":
+                        this.moveLeft();
+                        break;
+                    case "right":
+                        this.moveRight();
+                        break;
+                }
             }
 
             this.setSpriteCounter(this.getSpriteCounter() + 1);
@@ -87,7 +108,7 @@ public class Player extends Entity {
     public void draw(GraphicsContext gc) {
         Image image = null;
 
-        switch (direction) {
+        switch (this.getDirection()) {
             case "up":
                 if (this.getSpriteNumber() == 1) {
                     image = up1;
