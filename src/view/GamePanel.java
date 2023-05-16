@@ -2,6 +2,7 @@ package view;
 
 import abstraction.Player;
 import abstraction.TileManager;
+import controller.Collision;
 import controller.KeyHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,9 +25,10 @@ public class GamePanel extends Canvas implements Runnable {
     public static final int WORLD_HEIGHT = TILE_SIZE * MAX_WORLD_ROW;
 
     // FPS
-    public static final int FPS = 30;
+    public static final int FPS = 45;
 
     TileManager tileManager = new TileManager(this);
+    private Collision collisionChecker;
     Thread gameThread;
     KeyHandler keyH;
     private Player player;
@@ -34,10 +36,15 @@ public class GamePanel extends Canvas implements Runnable {
     public GamePanel(KeyHandler keyH) {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.player = new Player(this, keyH);
+        this.collisionChecker = new Collision(this);
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public TileManager getTileManager() {
+        return tileManager;
     }
 
     public void startGameThread() {
@@ -74,6 +81,10 @@ public class GamePanel extends Canvas implements Runnable {
 
     public void update() {
         player.update();
+    }
+
+    public Collision getCollisionChecker() {
+        return collisionChecker;
     }
 
     public void draw(GraphicsContext gc) {
