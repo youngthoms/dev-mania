@@ -35,7 +35,7 @@ public class GamePanel extends Canvas implements Runnable {
     KeyHandler keyH;
     private Player player;
 
-    public SuperObject object []= new SuperObject[10];
+    public SuperObject object[] = new SuperObject[10];
     public AssetSetter assetSetter = new AssetSetter(this);
 
     public GamePanel(KeyHandler keyH) {
@@ -96,16 +96,16 @@ public class GamePanel extends Canvas implements Runnable {
         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         tileManager.draw(gc);
 
-        for (int i = 0;i<object.length;i++){
-            if(object[i]!=null){
-                object[i].draw(gc,this);
+        for (int i = 0; i < object.length; i++) {
+            if (object[i] != null) {
+                object[i].draw(gc, this);
             }
         }
         player.draw(gc);
         gc.stroke();
     }
 
-    public void setUpGame(){
+    public void setUpGame() {
         assetSetter.setObject();
     }
 }
