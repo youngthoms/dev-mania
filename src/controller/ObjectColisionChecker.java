@@ -25,24 +25,48 @@ public class ObjectColisionChecker {
                         entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
                             System.out.println("colide");
+                            if (gp.object[i].getColision()==true){
+                                entity.setCollisionOn(true);
+                            }
+                            if (player==true){
+                                index = i;
+                            }
                         }
                         break;
                     case "down":
                         entity.getHitbox().setY(entity.getHitbox().getY() + entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
                             System.out.println("colide");
+                            if (gp.object[i].getColision()==true){
+                                entity.setCollisionOn(true);
+                            }
+                            if (player==true){
+                                index = i;
+                            }
                         }
                         break;
                     case "right":
                         entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
                             System.out.println("colide");
+                            if (gp.object[i].getColision()==true){
+                                entity.setCollisionOn(true);
+                            }
+                            if (player==true){
+                                index = i;
+                            }
                         }
                         break;
                     case "left":
                         entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
                             System.out.println("colide");
+                            if (gp.object[i].getColision()==true){
+                                entity.setCollisionOn(true);
+                            }
+                            if (player==true){
+                                index = i;
+                            }
                         }
                         break;
                 }

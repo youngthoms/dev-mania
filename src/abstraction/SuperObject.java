@@ -84,8 +84,8 @@ public class SuperObject {
         this.worldY = worldY;
     }
 
-    public boolean isColision() {
-        return colision;
+    public boolean getColision(){
+        return this.colision;
     }
 
     public void setColision(boolean colision) {
