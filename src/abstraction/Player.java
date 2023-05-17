@@ -12,6 +12,7 @@ import static view.GamePanel.*;
 
 
 public class Player extends Entity {
+    private int hasKey = 0;
     private int screenX, screenY;
     public static final int SPRITE_COUNTER_NUMBER = 9;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
@@ -26,8 +27,6 @@ public class Player extends Entity {
         this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
 
         this.setHitbox(new Rectangle(8, 16, 32, 32));
-        this.solidAreaDefaultX = 8;
-        this.solidAreaDefaultY = 16;
         this.setDefaultValues();
         this.getPlayerImage();
     }
@@ -76,6 +75,9 @@ public class Player extends Entity {
             this.setCollisionOn(false);
             this.getGamePanel().getCollisionChecker().checkTile(this);
 
+            //check si un bonus et le ramasse
+            int objectIndex = this.getGamePanel().getColisionObject().checkObject(this, true);
+            pickUpObject(objectIndex);
             // If collision is false, player can move
             if (this.getCollisionOn() == false) {
                 switch (direction) {
@@ -104,6 +106,27 @@ public class Player extends Entity {
                 this.setSpriteCounter(0);
             }
         }
+    }
+
+    public void pickUpObject(int index) {
+        if (index != 999) {
+            String objectName = getGamePanel().object[index].getName();
+            switch(objectName){
+                case "Key":
+                    hasKey++;
+                    getGamePanel().object[index] = null;
+                    break;
+                case "Door":
+                    if (getHasKey()>0){
+                        hasKey--;
+                        getGamePanel().object[index] = null;
+                    }
+                    break;
+
+            }
+
+        }
+
     }
 
     public void draw(GraphicsContext gc) {
@@ -156,5 +179,13 @@ public class Player extends Entity {
         left2 = new Image(getURL("boy_left_2.png"), TILE_SIZE, TILE_SIZE, false, false);
         right1 = new Image(getURL("boy_right_1.png"), TILE_SIZE, TILE_SIZE, false, false);
         right2 = new Image(getURL("boy_right_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+    }
+
+    public int getHasKey() {
+        return hasKey;
+    }
+
+    public void setHasKey(int hasKey) {
+        this.hasKey = hasKey;
     }
 }

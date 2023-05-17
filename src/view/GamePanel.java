@@ -6,6 +6,7 @@ import abstraction.TileManager;
 import controller.Collision;
 import controller.AssetSetter;
 import controller.KeyHandler;
+import controller.ObjectColisionChecker;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -34,7 +35,7 @@ public class GamePanel extends Canvas implements Runnable {
     Thread gameThread;
     KeyHandler keyH;
     private Player player;
-
+    private ObjectColisionChecker colisionObject;
     public SuperObject object[] = new SuperObject[10];
     public AssetSetter assetSetter = new AssetSetter(this);
 
@@ -42,6 +43,7 @@ public class GamePanel extends Canvas implements Runnable {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.player = new Player(this, keyH);
         this.collisionChecker = new Collision(this);
+        this.colisionObject = new ObjectColisionChecker(this);
     }
 
     public Player getPlayer() {
@@ -96,9 +98,9 @@ public class GamePanel extends Canvas implements Runnable {
         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         tileManager.draw(gc);
 
-        for (int i = 0; i < object.length; i++) {
-            if (object[i] != null) {
-                object[i].draw(gc, this);
+        for (SuperObject so : object) {
+            if (so != null) {
+                so.draw(gc, this);
             }
         }
         player.draw(gc);
@@ -107,5 +109,13 @@ public class GamePanel extends Canvas implements Runnable {
 
     public void setUpGame() {
         assetSetter.setObject();
+    }
+
+    public ObjectColisionChecker getColisionObject() {
+        return colisionObject;
+    }
+
+    public void setColisionObject(ObjectColisionChecker colisionObject) {
+        this.colisionObject = colisionObject;
     }
 }
