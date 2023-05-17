@@ -24,11 +24,11 @@ public class ObjectColisionChecker {
                     case "up":
                         entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("colide");
-                            if (gp.object[i].getColision()==true){
+                            System.out.println("Collide Up");
+                            if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }
-                            if (player==true){
+                            if (player == true) {
                                 index = i;
                             }
                         }
@@ -36,11 +36,11 @@ public class ObjectColisionChecker {
                     case "down":
                         entity.getHitbox().setY(entity.getHitbox().getY() + entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("colide");
-                            if (gp.object[i].getColision()==true){
+                            System.out.println("Collide Down");
+                            if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }
-                            if (player==true){
+                            if (player == true) {
                                 index = i;
                             }
                         }
@@ -48,11 +48,11 @@ public class ObjectColisionChecker {
                     case "right":
                         entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("colide");
-                            if (gp.object[i].getColision()==true){
+                            System.out.println("Collide Right");
+                            if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }
-                            if (player==true){
+                            if (player == true) {
                                 index = i;
                             }
                         }
@@ -60,19 +60,19 @@ public class ObjectColisionChecker {
                     case "left":
                         entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("colide");
-                            if (gp.object[i].getColision()==true){
+                            System.out.println("Collide Left");
+                            if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }
-                            if (player==true){
+                            if (player == true) {
                                 index = i;
                             }
                         }
                         break;
                 }
 
-                entity.getHitbox().setY(entity.getSolidAreaDefaultY());
-                entity.getHitbox().setX(entity.getSolidAreaDefaultX());
+                entity.getHitbox().setY(entity.getsolidHitboxDefaultY());
+                entity.getHitbox().setX(entity.getsolidHitboxDefaultX());
 
                 gp.object[i].getHitbox().setY(gp.object[i].getHitboxDefaultY());
                 gp.object[i].getHitbox().setX(gp.object[i].getHitboxDefaultX());

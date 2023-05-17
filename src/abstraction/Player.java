@@ -27,6 +27,8 @@ public class Player extends Entity {
         this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
 
         this.setHitbox(new Rectangle(8, 16, 32, 32));
+        this.setSolidHitboxDefaultX((int) this.getHitbox().getX());
+        this.setSolidHitboxDefaultY((int) this.getHitbox().getY());
         this.setDefaultValues();
         this.getPlayerImage();
     }
@@ -111,13 +113,13 @@ public class Player extends Entity {
     public void pickUpObject(int index) {
         if (index != 999) {
             String objectName = getGamePanel().object[index].getName();
-            switch(objectName){
+            switch (objectName) {
                 case "Key":
                     hasKey++;
                     getGamePanel().object[index] = null;
                     break;
                 case "Door":
-                    if (getHasKey()>0){
+                    if (getHasKey() > 0) {
                         hasKey--;
                         getGamePanel().object[index] = null;
                     }

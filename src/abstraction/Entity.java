@@ -9,17 +9,17 @@ public abstract class Entity {
     private GamePanel gp;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
-    private int solidAreaDefaultX, solidAreaDefaultY;
+    private int solidHitboxDefaultX, solidHitboxDefaultY;
     private Rectangle hitbox;
     private String direction;
     private boolean collisionOn = false;
 
-    public int getSolidAreaDefaultY() {
-        return solidAreaDefaultY;
+    public int getsolidHitboxDefaultY() {
+        return solidHitboxDefaultY;
     }
 
-    public int getSolidAreaDefaultX() {
-        return solidAreaDefaultX;
+    public int getsolidHitboxDefaultX() {
+        return solidHitboxDefaultX;
     }
 
     public int getSpriteCounter() {
@@ -95,6 +95,14 @@ public abstract class Entity {
 
     public void setCollisionOn(boolean collisionOn) {
         this.collisionOn = collisionOn;
+    }
+
+    public void setSolidHitboxDefaultX(int solidHitboxDefaultX) {
+        this.solidHitboxDefaultX = solidHitboxDefaultX;
+    }
+
+    public void setSolidHitboxDefaultY(int solidHitboxDefaultY) {
+        this.solidHitboxDefaultY = solidHitboxDefaultY;
     }
 
     public void moveUp() {
