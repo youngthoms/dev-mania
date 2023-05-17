@@ -14,12 +14,13 @@ public class AssetSetter {
 
     public void setObject() {
         gp.object[0] = new OBJ_key();
-        gp.object[0].worldX = 23 * gp.TILE_SIZE;
-        gp.object[0].worldY = 7 * gp.TILE_SIZE;
+        gp.object[0].setWorldX(23 * gp.TILE_SIZE);
+        gp.object[0].setWorldY(7 * gp.TILE_SIZE);
 
         gp.object[1] = new OBJ_door();
-        gp.object[1].worldX = 23 * gp.TILE_SIZE;
-        gp.object[1].worldY = 10 * gp.TILE_SIZE;
+        gp.object[1].setWorldX(23 * gp.TILE_SIZE);
+        gp.object[1].setWorldY(10 * gp.TILE_SIZE);
+
     }
 
 }

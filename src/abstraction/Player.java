@@ -26,8 +26,6 @@ public class Player extends Entity {
         this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
 
         this.setHitbox(new Rectangle(8, 16, 32, 32));
-        this.solidAreaDefaultX = 8;
-        this.solidAreaDefaultY = 16;
         this.setDefaultValues();
         this.getPlayerImage();
     }
@@ -75,6 +73,8 @@ public class Player extends Entity {
             // Check tile collision
             this.setCollisionOn(false);
             this.getGamePanel().getCollisionChecker().checkTile(this);
+
+            int objectIndex=this.getGamePanel().getColisionObject().checkObject(this,true);
 
             // If collision is false, player can move
             if (this.getCollisionOn() == false) {

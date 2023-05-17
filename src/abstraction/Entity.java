@@ -9,10 +9,18 @@ public abstract class Entity {
     private GamePanel gp;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
-    public int solidAreaDefaultX, solidAreaDefaultY;
+    private int solidAreaDefaultX, solidAreaDefaultY;
     private Rectangle hitbox;
     private String direction;
     private boolean collisionOn = false;
+
+    public int getSolidAreaDefaultY() {
+        return solidAreaDefaultY;
+    }
+
+    public int getSolidAreaDefaultX() {
+        return solidAreaDefaultX;
+    }
 
     public int getSpriteCounter() {
         return spriteCounter;
