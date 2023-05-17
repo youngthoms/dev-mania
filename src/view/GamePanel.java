@@ -33,9 +33,11 @@ public class GamePanel extends Canvas implements Runnable {
 
     TileManager tileManager = new TileManager(this);
     private Collision collisionChecker;
-    Thread gameThread;
+    private Thread gameThread;
     private KeyHandler keyH;
     private Player player;
+    private UI ui;
+
     private ObjectColisionChecker colisionObject;
     public SuperObject object[] = new SuperObject[10];
     public AssetSetter assetSetter = new AssetSetter(this);
@@ -45,6 +47,7 @@ public class GamePanel extends Canvas implements Runnable {
         this.keyH = new KeyHandler();
         this.player = new Player(this, keyH);
         this.collisionChecker = new Collision(this);
+        this.ui = new UI(this);
         this.colisionObject = new ObjectColisionChecker(this);
     }
 
@@ -110,6 +113,7 @@ public class GamePanel extends Canvas implements Runnable {
             }
         }
         player.draw(gc);
+        ui.draw(gc);
     }
 
     public void setUpGame() {
