@@ -1,8 +1,10 @@
 package view;
 
 import abstraction.Player;
+import abstraction.SuperObject;
 import abstraction.TileManager;
 import controller.Collision;
+import controller.AssetSetter;
 import controller.KeyHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -32,6 +34,9 @@ public class GamePanel extends Canvas implements Runnable {
     Thread gameThread;
     KeyHandler keyH;
     private Player player;
+
+    public SuperObject object[] = new SuperObject[10];
+    public AssetSetter assetSetter = new AssetSetter(this);
 
     public GamePanel(KeyHandler keyH) {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -90,7 +95,17 @@ public class GamePanel extends Canvas implements Runnable {
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         tileManager.draw(gc);
+
+        for (int i = 0; i < object.length; i++) {
+            if (object[i] != null) {
+                object[i].draw(gc, this);
+            }
+        }
         player.draw(gc);
         gc.stroke();
+    }
+
+    public void setUpGame() {
+        assetSetter.setObject();
     }
 }

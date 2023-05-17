@@ -26,7 +26,8 @@ public class Player extends Entity {
         this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
 
         this.setHitbox(new Rectangle(8, 16, 32, 32));
-
+        this.solidAreaDefaultX = 8;
+        this.solidAreaDefaultY = 16;
         this.setDefaultValues();
         this.getPlayerImage();
     }

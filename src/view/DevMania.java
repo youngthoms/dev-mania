@@ -18,7 +18,7 @@ public class DevMania extends Application {
         primaryStage.setTitle("Dev Mania");
         KeyHandler keyH = new KeyHandler();
         GamePanel gp = new GamePanel(keyH);
-
+        gp.setUpGame();
         BorderPane root = new BorderPane();
         root.setCenter(gp);
         root.getStyleClass().add("root");
@@ -31,6 +31,8 @@ public class DevMania extends Application {
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();
+
+
         gp.startGameThread();
     }
 }

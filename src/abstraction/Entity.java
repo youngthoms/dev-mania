@@ -9,6 +9,7 @@ public abstract class Entity {
     private GamePanel gp;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
+    public int solidAreaDefaultX, solidAreaDefaultY;
     private Rectangle hitbox;
     private String direction;
     private boolean collisionOn = false;
