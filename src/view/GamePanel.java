@@ -1,5 +1,6 @@
 package view;
 
+import abstraction.Entity;
 import abstraction.Player;
 import abstraction.SuperObject;
 import abstraction.TileManager;
@@ -37,6 +38,7 @@ public class GamePanel extends Canvas implements Runnable {
 
     private ObjectColisionChecker colisionObject;
     public SuperObject object[] = new SuperObject[10];
+    private Entity npc[] = new Entity[10];
     public AssetSetter assetSetter = new AssetSetter(this);
     private EventHandler eventHandler;
 
@@ -100,6 +102,12 @@ public class GamePanel extends Canvas implements Runnable {
 
     public void update() {
         player.update();
+
+        for (Entity ent : npc){
+            if (ent != null){
+                ent.update();
+            }
+        }
     }
 
     public Collision getCollisionChecker() {
@@ -115,12 +123,19 @@ public class GamePanel extends Canvas implements Runnable {
                 so.draw(gc, this);
             }
         }
+        for (Entity ent : getNpc()) {
+            if (ent != null) {
+                ent.draw(gc);
+            }
+        }
+
         player.draw(gc);
         ui.draw(gc);
     }
 
     public void setUpGame() {
         assetSetter.setObject();
+        assetSetter.setNPC();
     }
 
     public ObjectColisionChecker getColisionObject() {
@@ -129,5 +144,13 @@ public class GamePanel extends Canvas implements Runnable {
 
     public void setColisionObject(ObjectColisionChecker colisionObject) {
         this.colisionObject = colisionObject;
+    }
+
+    public Entity[] getNpc() {
+        return npc;
+    }
+
+    public void setNpc(Entity[] npc) {
+        this.npc = npc;
     }
 }

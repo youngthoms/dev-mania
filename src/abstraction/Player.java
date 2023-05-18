@@ -1,9 +1,7 @@
 package abstraction;
 
 import controller.KeyHandler;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.shape.Rectangle;
 import view.GamePanel;
 
 import java.io.File;
@@ -13,52 +11,16 @@ import static view.GamePanel.*;
 
 public class Player extends Entity {
     private int hasKey = 0;
-    private int screenX, screenY;
-    public static final int SPRITE_COUNTER_NUMBER = 9;
-    private Image up1, up2, down1, down2, left1, left2, right1, right2;
+
     public static final String RES_URL = "file:res" + File.separator + "player";
     KeyHandler keyH;
 
     public Player(GamePanel g, KeyHandler keyH) {
         super(g);
         this.keyH = keyH;
-
-        this.setScreenX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
-        this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
-
-        this.setHitbox(new Rectangle(8, 16, 32, 32));
-        this.setSolidHitboxDefaultX((int) this.getHitbox().getX());
-        this.setSolidHitboxDefaultY((int) this.getHitbox().getY());
-        this.setDefaultValues();
         this.getPlayerImage();
     }
 
-    public int getScreenX() {
-        return screenX;
-    }
-
-    public int getScreenY() {
-        return screenY;
-    }
-
-    public void setScreenX(int screenX) {
-        this.screenX = screenX;
-    }
-
-    public void setScreenY(int screenY) {
-        this.screenY = screenY;
-    }
-
-    public void setDefaultValues() {
-        this.setWorldX(TILE_SIZE * 23);
-        this.setWorldY(TILE_SIZE * 20);
-        this.setSpeed(5);
-        this.setDirection("down");
-
-        // Player status
-        this.setMaxLife(6); // 6 Life = 3 hearts
-        this.setLife(this.getMaxLife());
-    }
 
     public static String getURL(String ImageName) {
         return RES_URL + File.separator + ImageName;
@@ -88,6 +50,9 @@ public class Player extends Entity {
             // Check event
             this.getGamePanel().getEventHandler().checkEvent();
 
+
+            int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this,getGamePanel().getNpc());
+            interactNPC(npcIndex);
             // If collision is false, player can move
             if (this.getCollisionOn() == false) {
                 switch (direction) {
@@ -118,6 +83,12 @@ public class Player extends Entity {
         }
     }
 
+    public void interactNPC(int index){
+        if(index!=999){
+            System.out.println("hitting npc");
+        }
+    }
+
     public void pickUpObject(int index) {
         if (index != 999) {
             String objectName = getGamePanel().object[index].getName();
@@ -139,56 +110,15 @@ public class Player extends Entity {
 
     }
 
-    public void draw(GraphicsContext gc) {
-        Image image = null;
-
-        switch (this.getDirection()) {
-            case "up":
-                if (this.getSpriteNumber() == 1) {
-                    image = up1;
-                }
-                if (this.getSpriteNumber() == 2) {
-                    image = up2;
-                }
-                break;
-            case "down":
-                if (this.getSpriteNumber() == 1) {
-                    image = down1;
-                }
-                if (this.getSpriteNumber() == 2) {
-                    image = down2;
-                }
-                break;
-            case "left":
-                if (this.getSpriteNumber() == 1) {
-                    image = left1;
-                }
-                if (this.getSpriteNumber() == 2) {
-                    image = left2;
-                }
-                break;
-            case "right":
-                if (this.getSpriteNumber() == 1) {
-                    image = right1;
-                }
-                if (this.getSpriteNumber() == 2) {
-                    image = right2;
-                }
-                break;
-        }
-
-        gc.drawImage(image, this.getScreenX(), this.getScreenY());
-    }
 
     public void getPlayerImage() {
-        up1 = new Image(getURL("boy_up_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        up2 = new Image(getURL("boy_up_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        down1 = new Image(getURL("boy_down_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        down2 = new Image(getURL("boy_down_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        left1 = new Image(getURL("boy_left_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        left2 = new Image(getURL("boy_left_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        right1 = new Image(getURL("boy_right_1_2.png"), TILE_SIZE, TILE_SIZE, false, false);
-        right2 = new Image(getURL("boy_right_2_2.png"), TILE_SIZE, TILE_SIZE, false, false);
+        setUp1(new Image(getURL("boy_up_1_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setUp2(new Image(getURL("boy_up_2_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setDown2(new Image(getURL("boy_down_2_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setDown1(new Image(getURL("boy_down_1_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setLeft1(new Image(getURL("boy_left_1_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setLeft2(new Image(getURL("boy_left_2_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setRight1(new Image(getURL("boy_right_1_2.png"), TILE_SIZE, TILE_SIZE, false, false));
     }
 
     public int getHasKey() {

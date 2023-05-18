@@ -68,4 +68,108 @@ public class Collision {
         }
 
     }
+    public int checkEntity(Entity entity, Entity[] target){
+        int index = 999;
+        for (int i = 0; i < target.length; i++) {
+
+            if (target[i] != null) {
+                entity.getHitbox().setX(entity.getWorldX() + entity.getHitbox().getX());
+                entity.getHitbox().setY(entity.getWorldY() + entity.getHitbox().getY());
+                target[i].getHitbox().setX(target[i].getWorldX() + target[i].getHitbox().getX());
+                target[i].getHitbox().setY(target[i].getWorldY() + target[i].getHitbox().getY());
+
+                switch (entity.getDirection()) {
+                    case "up":
+                        entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
+                        if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
+                            entity.setCollisionOn(true);
+                            index = i;
+                        }
+                        break;
+                    case "down":
+                        entity.getHitbox().setY(entity.getHitbox().getY() + entity.getSpeed());
+
+                        System.out.println("Collide Down");
+                        if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
+                            entity.setCollisionOn(true);
+                            index = i;
+                        }
+                        break;
+                    case "right":
+                        entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
+                            System.out.println("Collide Right");
+                            if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
+                                entity.setCollisionOn(true);
+                                index = i;
+                        }
+                        break;
+                    case "left":
+                        entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
+                        System.out.println("Collide Left");
+                        if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
+                            entity.setCollisionOn(true);
+                            index = i;
+                        }
+                        break;
+                }
+
+                entity.getHitbox().setY(entity.getsolidHitboxDefaultY());
+                entity.getHitbox().setX(entity.getsolidHitboxDefaultX());
+
+                target[i].getHitbox().setY(target[i].getSolidHitboxDefaultY());
+                target[i].getHitbox().setX(target[i].getSolidHitboxDefaultX());
+
+
+            }
+        }
+        return index;
+    }
+
+    public void checkPlayer(Entity entity){
+        entity.getHitbox().setX(entity.getWorldX() + entity.getHitbox().getX());
+        entity.getHitbox().setY(entity.getWorldY() + entity.getHitbox().getY());
+        gp.getPlayer().getHitbox().setX(gp.getPlayer().getWorldX() + gp.getPlayer().getHitbox().getX());
+        gp.getPlayer().getHitbox().setY(gp.getPlayer().getWorldY() + gp.getPlayer().getHitbox().getY());
+
+        switch (entity.getDirection()) {
+            case "up":
+                entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
+                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
+                    entity.setCollisionOn(true);
+
+                }
+                break;
+            case "down":
+                entity.getHitbox().setY(entity.getHitbox().getY() + entity.getSpeed());
+
+                System.out.println("Collide Down");
+                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
+                    entity.setCollisionOn(true);
+
+                }
+                break;
+            case "right":
+                entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
+                System.out.println("Collide Right");
+                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
+                    entity.setCollisionOn(true);
+
+                }
+                break;
+            case "left":
+                entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
+                System.out.println("Collide Left");
+                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
+                    entity.setCollisionOn(true);
+
+                }
+                break;
+        }
+
+        entity.getHitbox().setY(entity.getsolidHitboxDefaultY());
+        entity.getHitbox().setX(entity.getsolidHitboxDefaultX());
+
+        gp.getPlayer().getHitbox().setY(gp.getPlayer().getSolidHitboxDefaultY());
+        gp.getPlayer().getHitbox().setX(gp.getPlayer().getSolidHitboxDefaultX());
+    }
 }
