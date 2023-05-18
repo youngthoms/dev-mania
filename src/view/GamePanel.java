@@ -3,10 +3,7 @@ package view;
 import abstraction.Player;
 import abstraction.SuperObject;
 import abstraction.TileManager;
-import controller.Collision;
-import controller.AssetSetter;
-import controller.KeyHandler;
-import controller.ObjectColisionChecker;
+import controller.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -41,6 +38,7 @@ public class GamePanel extends Canvas implements Runnable {
     private ObjectColisionChecker colisionObject;
     public SuperObject object[] = new SuperObject[10];
     public AssetSetter assetSetter = new AssetSetter(this);
+    private EventHandler eventHandler;
 
     public GamePanel() {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -49,6 +47,7 @@ public class GamePanel extends Canvas implements Runnable {
         this.collisionChecker = new Collision(this);
         this.ui = new UI(this);
         this.colisionObject = new ObjectColisionChecker(this);
+        this.eventHandler = new EventHandler(this);
     }
 
     public Player getPlayer() {
@@ -61,6 +60,10 @@ public class GamePanel extends Canvas implements Runnable {
 
     public KeyHandler getKeyH() {
         return keyH;
+    }
+
+    public EventHandler getEventHandler() {
+        return eventHandler;
     }
 
     public void startGameThread() {

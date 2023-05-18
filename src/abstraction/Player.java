@@ -81,9 +81,13 @@ public class Player extends Entity {
             this.setCollisionOn(false);
             this.getGamePanel().getCollisionChecker().checkTile(this);
 
-            //check si un bonus et le ramasse
+            // Check object collision
             int objectIndex = this.getGamePanel().getColisionObject().checkObject(this, true);
             pickUpObject(objectIndex);
+
+            // Check event
+            this.getGamePanel().getEventHandler().checkEvent();
+
             // If collision is false, player can move
             if (this.getCollisionOn() == false) {
                 switch (direction) {
