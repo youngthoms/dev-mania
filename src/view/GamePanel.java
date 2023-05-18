@@ -29,6 +29,13 @@ public class GamePanel extends Canvas implements Runnable {
     // FPS
     public static final int FPS = 45;
 
+    //GAME STATE
+
+    private int gameState;
+    private int playState = 1;
+    private int pauseState = 2;
+    private int dialogueState = 3;
+
     TileManager tileManager = new TileManager(this);
     private Collision collisionChecker;
     private Thread gameThread;
@@ -44,7 +51,7 @@ public class GamePanel extends Canvas implements Runnable {
 
     public GamePanel() {
         super(SCREEN_WIDTH, SCREEN_HEIGHT);
-        this.keyH = new KeyHandler();
+        this.keyH = new KeyHandler(this);
         this.player = new Player(this, keyH);
         this.collisionChecker = new Collision(this);
         this.ui = new UI(this);
@@ -100,13 +107,22 @@ public class GamePanel extends Canvas implements Runnable {
         }
     }
 
-    public void update() {
-        player.update();
+    public int getGameState() {
+        return gameState;
+    }
 
-        for (Entity ent : npc){
-            if (ent != null){
-                ent.update();
+    public void update() {
+        if (getGameState() == getPlayState()) {
+            player.update();
+
+            for (Entity ent : npc) {
+                if (ent != null) {
+                    ent.update();
+                }
             }
+        }
+        if(getGameState()== getPauseState()){
+
         }
     }
 
@@ -133,9 +149,14 @@ public class GamePanel extends Canvas implements Runnable {
         ui.draw(gc);
     }
 
+    public void setGameState(int gameState) {
+        this.gameState = gameState;
+    }
+
     public void setUpGame() {
         assetSetter.setObject();
         assetSetter.setNPC();
+        setGameState(getPlayState());
     }
 
     public ObjectColisionChecker getColisionObject() {
@@ -152,5 +173,37 @@ public class GamePanel extends Canvas implements Runnable {
 
     public void setNpc(Entity[] npc) {
         this.npc = npc;
+    }
+
+    public int getPauseState() {
+        return pauseState;
+    }
+
+    public void setPauseState(int pauseState) {
+        this.pauseState = pauseState;
+    }
+
+    public int getPlayState() {
+        return playState;
+    }
+
+    public void setPlayState(int playState) {
+        this.playState = playState;
+    }
+
+    public int getDialogueState() {
+        return dialogueState;
+    }
+
+    public void setDialogueState(int dialogueState) {
+        this.dialogueState = dialogueState;
+    }
+
+    public UI getUi() {
+        return ui;
+    }
+
+    public void setUi(UI ui) {
+        this.ui = ui;
     }
 }

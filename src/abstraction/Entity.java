@@ -20,16 +20,16 @@ public abstract class Entity {
     private int screenX, screenY;
     public static final int SPRITE_COUNTER_NUMBER = 9;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
-
+    public String[] dialogues;
     public Entity(GamePanel g) {
         this.gp = g;
         this.setScreenX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
         this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
-
         this.setHitbox(new Rectangle(8, 16, 32, 32));
         this.setSolidHitboxDefaultX((int) this.getHitbox().getX());
         this.setSolidHitboxDefaultY((int) this.getHitbox().getY());
         this.setDefaultValues();
+        dialogues = new String[15];
     }
 
     public int getSolidHitboxDefaultY() {
@@ -44,42 +44,21 @@ public abstract class Entity {
         return collisionOn;
     }
 
+    public String[] getDialogues() {
+        return dialogues;
+    }
+
+    public void setDialogues(String[] dialogues) {
+        this.dialogues = dialogues;
+    }
+
+    public void speak(){
+
+    }
+
     public void setAction(){};
 
-    public void update(){
-        setAction();
-        collisionOn = false;
-        getGamePanel().getCollisionChecker().checkTile(this);
-        getGamePanel().getCollisionChecker().checkPlayer(this);
-        getGamePanel().getColisionObject().checkObject(this,false);
-
-        if (!this.getCollisionOn()) {
-            switch (direction) {
-                case "up":
-                    this.moveUp();
-                    break;
-                case "down":
-                    this.moveDown();
-                    break;
-                case "left":
-                    this.moveLeft();
-                    break;
-                case "right":
-                    this.moveRight();
-                    break;
-            }
-        }
-
-        this.setSpriteCounter(this.getSpriteCounter() + 1);
-        if (this.getSpriteCounter() > SPRITE_COUNTER_NUMBER) {
-            if (this.getSpriteNumber() == 1) {
-                this.setSpriteNumber(2);
-            } else if (this.getSpriteNumber() == 2) {
-                this.setSpriteNumber(1);
-            }
-            this.setSpriteCounter(0);
-        }
-    };
+    public void update(){}
 
     public int getsolidHitboxDefaultY() {
         return solidHitboxDefaultY;
@@ -195,22 +174,22 @@ public abstract class Entity {
 
     public void moveUp() {
         this.setWorldY(this.getWorldY() - this.getSpeed());
-        System.out.printf("Up  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
+        //System.out.printf("Up  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public void moveDown() {
         this.setWorldY(this.getWorldY() + this.getSpeed());
-        System.out.printf("Down  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
+        //System.out.printf("Down  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public void moveLeft() {
         this.setWorldX(this.getWorldX() - this.getSpeed());
-        System.out.printf("Left  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
+        //System.out.printf("Left  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public void moveRight() {
         this.setWorldX(this.getWorldX() + this.getSpeed());
-        System.out.printf("Right  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
+        //System.out.printf("Right  <x:%d ; y:%d>\n", this.getWorldX(), this.getWorldY());
     }
 
     public int getScreenX() {

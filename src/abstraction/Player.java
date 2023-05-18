@@ -85,8 +85,13 @@ public class Player extends Entity {
 
     public void interactNPC(int index){
         if(index!=999){
-            System.out.println("hitting npc");
+            if(getGamePanel().getKeyH().interract) {
+                getGamePanel().setGameState(getGamePanel().getDialogueState());
+                getGamePanel().getNpc()[index].speak();
+            }
+            getGamePanel().getKeyH().interract = false;
         }
+        getGamePanel().getKeyH().interract = false;
     }
 
     public void pickUpObject(int index) {

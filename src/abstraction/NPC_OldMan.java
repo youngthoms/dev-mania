@@ -19,6 +19,7 @@ public class NPC_OldMan extends Entity {
         setDirection("down");
         setSpeed(1);
         getOldmanImage();
+        setDialogue();
     }
 
     public static String getURL(String ImageName) {
@@ -59,11 +60,54 @@ public class NPC_OldMan extends Entity {
         }
     }
 
+    public void update(){
+        setAction();
+        setCollisionOn(false);
+        getGamePanel().getCollisionChecker().checkTile(this);
+        getGamePanel().getCollisionChecker().checkPlayer(this);
+        getGamePanel().getColisionObject().checkObject(this,false);
+
+        if (!this.getCollisionOn()) {
+            switch (getDirection()) {
+                case "up":
+                    this.moveUp();
+                    break;
+                case "down":
+                    this.moveDown();
+                    break;
+                case "left":
+                    this.moveLeft();
+                    break;
+                case "right":
+                    this.moveRight();
+                    break;
+            }
+        }
+
+        this.setSpriteCounter(this.getSpriteCounter() + 1);
+        if (this.getSpriteCounter() > SPRITE_COUNTER_NUMBER) {
+            if (this.getSpriteNumber() == 1) {
+                this.setSpriteNumber(2);
+            } else if (this.getSpriteNumber() == 2) {
+                this.setSpriteNumber(1);
+            }
+            this.setSpriteCounter(0);
+        }
+    };
+
     public int getActionLockCounter() {
         return actionLockCounter;
     }
 
     public void setActionLockCounter(int actionLockCounter) {
         this.actionLockCounter = actionLockCounter;
+    }
+
+    public void setDialogue(){
+        dialogues[0]="Hello";
+    }
+
+    public void speak(){
+        getGamePanel().getUi().setCurrentDialogue(getDialogues()[0]);
     }
 }
