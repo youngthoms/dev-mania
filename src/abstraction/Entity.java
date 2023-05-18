@@ -5,7 +5,7 @@ import javafx.scene.shape.Rectangle;
 import view.GamePanel;
 
 public abstract class Entity {
-    private int worldX, worldY, speed, life, strength;
+    private int worldX, worldY, speed, life, maxLife, strength;
     private GamePanel gp;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
@@ -103,6 +103,22 @@ public abstract class Entity {
 
     public void setSolidHitboxDefaultY(int solidHitboxDefaultY) {
         this.solidHitboxDefaultY = solidHitboxDefaultY;
+    }
+
+    public int getMaxLife() {
+        return maxLife;
+    }
+
+    public void setMaxLife(int maxLife) {
+        this.maxLife = maxLife;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
     }
 
     public void moveUp() {

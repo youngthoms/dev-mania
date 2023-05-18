@@ -54,6 +54,10 @@ public class Player extends Entity {
         this.setWorldY(TILE_SIZE * 20);
         this.setSpeed(5);
         this.setDirection("down");
+
+        // Player status
+        this.setMaxLife(6); // 6 Life = 3 hearts
+        this.setLife(this.getMaxLife());
     }
 
     public static String getURL(String ImageName) {

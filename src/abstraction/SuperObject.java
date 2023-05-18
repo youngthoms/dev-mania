@@ -7,7 +7,7 @@ import view.GamePanel;
 
 public class SuperObject {
 
-    private Image image;
+    private Image image, image1, image2;
     private String name;
     private boolean colision = false;
     private int worldX, worldY;
@@ -60,8 +60,24 @@ public class SuperObject {
         this.image = image;
     }
 
+    public void setImage1(Image image1) {
+        this.image1 = image1;
+    }
+
+    public void setImage2(Image image2) {
+        this.image2 = image2;
+    }
+
     public Image getImage() {
         return this.image;
+    }
+
+    public Image getImage1() {
+        return image1;
+    }
+
+    public Image getImage2() {
+        return image2;
     }
 
     public int getHitboxDefaultY() {
