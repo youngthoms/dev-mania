@@ -79,11 +79,13 @@ public class Collision {
                 target[i].getHitbox().setY(target[i].getWorldY() + target[i].getHitbox().getY());
 
                 switch (entity.getDirection()) {
+
                     case "up":
                         entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
                         if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
                             entity.setCollisionOn(true);
                             index = i;
+                            System.out.println("colide");
                         }
                         break;
                     case "down":
@@ -91,7 +93,7 @@ public class Collision {
 
                         //System.out.println("Collide Down");
                         if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
-                            entity.setCollisionOn(true);
+                            entity.setCollisionOn(true);System.out.println("colide");
                             index = i;
                         }
                         break;
@@ -99,7 +101,7 @@ public class Collision {
                         entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
                             //System.out.println("Collide Right");
                         if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
-                            entity.setCollisionOn(true);
+                            entity.setCollisionOn(true);System.out.println("colide");
                             index = i;
                         }
                         break;
@@ -107,7 +109,7 @@ public class Collision {
                         entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
                         //System.out.println("Collide Left");
                         if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
-                            entity.setCollisionOn(true);
+                            entity.setCollisionOn(true);System.out.println("colide");
                             index = i;
                         }
                         break;

@@ -28,7 +28,7 @@ public class Player extends Entity {
 
     public void update() {
         String direction = this.getDirection();
-        if (keyH.up || keyH.down || keyH.left || keyH.right) {
+        if (keyH.up || keyH.down || keyH.left || keyH.right || keyH.interract) {
             if (keyH.up) {
                 this.setDirection("up");
             } else if (keyH.down) {
@@ -84,12 +84,16 @@ public class Player extends Entity {
     }
 
     public void interactNPC(int index){
+        System.out.println(getGamePanel().getKeyH().interract);
+
         if(index!=999){
             if(getGamePanel().getKeyH().interract) {
+
+                System.out.println(index);
                 getGamePanel().setGameState(getGamePanel().getDialogueState());
                 getGamePanel().getNpc()[index].speak();
             }
-            getGamePanel().getKeyH().interract = false;
+
         }
         getGamePanel().getKeyH().interract = false;
     }
