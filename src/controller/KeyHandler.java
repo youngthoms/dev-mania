@@ -6,10 +6,12 @@ import view.GamePanel;
 
 public class KeyHandler implements EventHandler<KeyEvent> {
     GamePanel gp;
-    public boolean up, down, left, right,interract;
-    public KeyHandler(GamePanel gp){
+    public boolean up, down, left, right, interract;
+
+    public KeyHandler(GamePanel gp) {
         this.gp = gp;
     }
+
     @Override
     public void handle(KeyEvent event) {
         System.out.println(event);
@@ -31,7 +33,7 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                         break;
                     case P:
                         gp.setGameState(gp.getPauseState());
-                    case I :
+                    case I:
                         interract = true;
                 }
             } else if (event.getEventType() == KeyEvent.KEY_RELEASED) {
@@ -52,7 +54,7 @@ public class KeyHandler implements EventHandler<KeyEvent> {
             }
         }
         //PAUSE STATE
-        else if (gp.getGameState() == gp.getPauseState()){
+        else if (gp.getGameState() == gp.getPauseState()) {
             if (event.getEventType() == KeyEvent.KEY_PRESSED) {
                 switch (event.getCode()) {
                     case P:
@@ -61,7 +63,7 @@ public class KeyHandler implements EventHandler<KeyEvent> {
             }
         }
         //DIALOGUES STATE
-        else if (gp.getGameState() == gp.getDialogueState()){
+        else if (gp.getGameState() == gp.getDialogueState()) {
             if (event.getEventType() == KeyEvent.KEY_PRESSED) {
                 switch (event.getCode()) {
                     case Q:

@@ -11,7 +11,6 @@ import static view.GamePanel.*;
 
 public class Player extends Entity {
     private int hasKey = 0;
-
     public static final String RES_URL = "file:res" + File.separator + "player";
     KeyHandler keyH;
 
@@ -19,6 +18,10 @@ public class Player extends Entity {
         super(g);
         this.keyH = keyH;
         this.getPlayerImage();
+
+        // Player status
+        this.setMaxLife(6); // 6 Life = 3 hearts
+        this.setLife(this.getMaxLife());
     }
 
 

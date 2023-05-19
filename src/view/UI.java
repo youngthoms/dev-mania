@@ -85,10 +85,7 @@ public class UI {
     }
 
     public void draw(GraphicsContext gc) {
-        gc.setFont(this.currentFont);
-        gc.setStroke(Color.WHITE);
-        gc.drawImage(keyImage, TILE_SIZE / 2, TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
-        gc.strokeText("x " + this.gp.getPlayer().getHasKey(), 74, 65);
+        drawPlayerInventory(gc);
         drawPlayerLife(gc);
 
         if (gp.getGameState() == gp.getPlayState()){
@@ -108,6 +105,13 @@ public class UI {
         x = gp.SCREEN_WIDTH/2 - lenght/2;
         gc.fillText("PAUSED",x,y);
 
+    }
+
+    public void drawPlayerInventory(GraphicsContext gc) {
+        gc.setFont(this.currentFont);
+        gc.setStroke(Color.WHITE);
+        gc.drawImage(keyImage, TILE_SIZE / 2, TILE_SIZE + (TILE_SIZE / 2), TILE_SIZE, TILE_SIZE);
+        gc.strokeText("x " + this.gp.getPlayer().getHasKey(), 74, 65 + TILE_SIZE);
     }
 
     public String getCurrentDialogue() {
