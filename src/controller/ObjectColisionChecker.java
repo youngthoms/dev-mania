@@ -24,7 +24,6 @@ public class ObjectColisionChecker {
                     case "up":
                         entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("Collide Up");
                             if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }
@@ -36,7 +35,6 @@ public class ObjectColisionChecker {
                     case "down":
                         entity.getHitbox().setY(entity.getHitbox().getY() + entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("Collide Down");
                             if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }
@@ -48,7 +46,6 @@ public class ObjectColisionChecker {
                     case "right":
                         entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("Collide Right");
                             if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }
@@ -60,7 +57,6 @@ public class ObjectColisionChecker {
                     case "left":
                         entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
                         if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                            System.out.println("Collide Left");
                             if (gp.object[i].getColision() == true) {
                                 entity.setCollisionOn(true);
                             }

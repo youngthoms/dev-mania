@@ -21,6 +21,7 @@ public abstract class Entity {
     public static final int SPRITE_COUNTER_NUMBER = 9;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
     public String[] dialogues;
+
     public Entity(GamePanel g) {
         this.gp = g;
         this.setScreenX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
@@ -52,13 +53,17 @@ public abstract class Entity {
         this.dialogues = dialogues;
     }
 
-    public void speak(){
+    public void speak() {
 
     }
 
-    public void setAction(){};
+    public void setAction() {
+    }
 
-    public void update(){}
+    ;
+
+    public void update() {
+    }
 
     public int getsolidHitboxDefaultY() {
         return solidHitboxDefaultY;
@@ -82,7 +87,6 @@ public abstract class Entity {
     public Rectangle getHitbox() {
         return hitbox;
     }
-
 
 
     public void setDefaultValues() {

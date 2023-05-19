@@ -121,7 +121,7 @@ public class GamePanel extends Canvas implements Runnable {
                 }
             }
         }
-        if(getGameState()== getPauseState()){
+        if (getGameState() == getPauseState()) {
 
         }
     }

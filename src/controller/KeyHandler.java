@@ -14,7 +14,6 @@ public class KeyHandler implements EventHandler<KeyEvent> {
 
     @Override
     public void handle(KeyEvent event) {
-        System.out.println(event);
         //PLAY STATE
         if (gp.getGameState() == gp.getPlayState()) {
             if (event.getEventType() == KeyEvent.KEY_PRESSED) {

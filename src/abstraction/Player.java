@@ -54,7 +54,7 @@ public class Player extends Entity {
             this.getGamePanel().getEventHandler().checkEvent();
 
 
-            int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this,getGamePanel().getNpc());
+            int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getNpc());
             interactNPC(npcIndex);
             // If collision is false, player can move
             if (this.getCollisionOn() == false) {
@@ -86,13 +86,9 @@ public class Player extends Entity {
         }
     }
 
-    public void interactNPC(int index){
-        System.out.println(getGamePanel().getKeyH().interract);
-
-        if(index!=999){
-            if(getGamePanel().getKeyH().interract) {
-
-                System.out.println(index);
+    public void interactNPC(int index) {
+        if (index != 999) {
+            if (getGamePanel().getKeyH().interract) {
                 getGamePanel().setGameState(getGamePanel().getDialogueState());
                 getGamePanel().getNpc()[index].speak();
             }
