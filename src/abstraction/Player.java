@@ -128,6 +128,7 @@ public class Player extends Entity {
         setLeft1(new Image(getURL("boy_left_1_2.png"), TILE_SIZE, TILE_SIZE, false, false));
         setLeft2(new Image(getURL("boy_left_2_2.png"), TILE_SIZE, TILE_SIZE, false, false));
         setRight1(new Image(getURL("boy_right_1_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setRight2(new Image(getURL("boy_right_2_2.png"), TILE_SIZE, TILE_SIZE, false, false));
     }
 
     public int getHasKey() {
