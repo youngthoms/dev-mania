@@ -6,7 +6,7 @@ import view.GamePanel;
 
 public class KeyHandler implements EventHandler<KeyEvent> {
     GamePanel gp;
-    public boolean up, down, left, right, interract;
+    public boolean up, down, left, right, interract, attacking;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -32,13 +32,23 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                         break;
                     case P:
                         gp.setGameState(gp.getPauseState());
+                        up = false;
+                        down = false;
+                        right = false;
+                        left = false;
+                        break;
                     case I:
                         interract = true;
+                        break;
+                    case ENTER:
+                        attacking = true;
+                        break;
                     case SPACE:
                         if (gp.getPlayer().getHasLifePotion()>0){
                             gp.getPlayer().setLife(gp.getPlayer().getMaxLife());
                             gp.getPlayer().setHasLifePotion(gp.getPlayer().getHasLifePotion()-1);
                         }
+                        break;
                 }
             } else if (event.getEventType() == KeyEvent.KEY_RELEASED) {
                 switch (event.getCode()) {
@@ -53,6 +63,9 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                         break;
                     case RIGHT:
                         right = false;
+                        break;
+                    case ENTER:
+                        attacking = false;
                         break;
                 }
             }

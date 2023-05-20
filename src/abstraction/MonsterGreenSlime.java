@@ -6,6 +6,8 @@ import view.GamePanel;
 
 import java.util.Random;
 
+import static view.GamePanel.FPS;
+
 public class MonsterGreenSlime extends Entity {
     private String name;
     private int actionLockCounter = 0;
@@ -107,6 +109,14 @@ public class MonsterGreenSlime extends Entity {
                 this.setSpriteNumber(1);
             }
             this.setSpriteCounter(0);
+        }
+
+        if (this.isInvincible()) {
+            this.setInvincibleCounter(this.getInvincibleCounter() + 1);
+            if (this.getInvincibleCounter() > FPS / 2) {
+                this.setInvincible(false);
+                this.setInvincibleCounter(0);
+            }
         }
     }
 }

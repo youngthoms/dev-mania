@@ -15,13 +15,16 @@ public abstract class Entity {
     private int spriteNumber = 1;
     private int solidHitboxDefaultX, solidHitboxDefaultY;
     private Rectangle hitbox;
+    private Rectangle attackHitbox;
     private String direction;
     private boolean collisionOn = false;
     private boolean invincible = false;
+    private boolean attacking = false;
     private int invincibleCounter = 0;
     private int screenX, screenY;
     public static final int SPRITE_COUNTER_NUMBER = 9;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
+    private Image attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
     public String[] dialogues;
 
     public Entity(GamePanel g) {
@@ -37,6 +40,22 @@ public abstract class Entity {
         this.setWorldY(worldY);
         this.setSpeed(speed);
         this.setDirection(direction);
+    }
+
+    public void setAttackHitbox(Rectangle attackHitbox) {
+        this.attackHitbox = attackHitbox;
+    }
+
+    public Rectangle getAttackHitbox() {
+        return attackHitbox;
+    }
+
+    public void setAttacking(boolean attacking) {
+        this.attacking = attacking;
+    }
+
+    public boolean isAttacking() {
+        return attacking;
     }
 
     public int getInvincibleCounter() {
@@ -237,41 +256,77 @@ public abstract class Entity {
 
             switch (this.getDirection()) {
                 case "up":
-                    if (this.getSpriteNumber() == 1) {
-                        image = up1;
-                    }
-                    if (this.getSpriteNumber() == 2) {
-                        image = up2;
+                    if (this.isAttacking()) {
+                        if (this.getSpriteNumber() == 1) {
+                            image = attackUp1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = attackUp2;
+                        }
+                    } else {
+                        if (this.getSpriteNumber() == 1) {
+                            image = up1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = up2;
+                        }
                     }
                     break;
                 case "down":
-                    if (this.getSpriteNumber() == 1) {
-                        image = down1;
-                    }
-                    if (this.getSpriteNumber() == 2) {
-                        image = down2;
+                    if (this.isAttacking()) {
+                        if (this.getSpriteNumber() == 1) {
+                            image = attackDown1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = attackDown2;
+                        }
+                    } else {
+                        if (this.getSpriteNumber() == 1) {
+                            image = down1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = down2;
+                        }
                     }
                     break;
                 case "left":
-                    if (this.getSpriteNumber() == 1) {
-                        image = left1;
-                    }
-                    if (this.getSpriteNumber() == 2) {
-                        image = left2;
+                    if (this.isAttacking()) {
+                        if (this.getSpriteNumber() == 1) {
+                            image = attackLeft1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = attackLeft2;
+                        }
+                    } else {
+                        if (this.getSpriteNumber() == 1) {
+                            image = left1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = left2;
+                        }
                     }
                     break;
                 case "right":
-                    if (this.getSpriteNumber() == 1) {
-                        image = right1;
-                    }
-                    if (this.getSpriteNumber() == 2) {
-                        image = right2;
+                    if (this.isAttacking()) {
+                        if (this.getSpriteNumber() == 1) {
+                            image = attackRight1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = attackRight2;
+                        }
+                    } else {
+                        if (this.getSpriteNumber() == 1) {
+                            image = right1;
+                        }
+                        if (this.getSpriteNumber() == 2) {
+                            image = right2;
+                        }
                     }
                     break;
             }
         }
         if (this.isInvincible()) {
-            gc.strokeText("-1", screenX, screenY);
+            gc.strokeText("Hit", screenX, screenY);
         }
         gc.drawImage(image, screenX, screenY, getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE);
     }
@@ -307,5 +362,101 @@ public abstract class Entity {
 
     public void setUp1(Image up1) {
         this.up1 = up1;
+    }
+
+    public Image getUp1() {
+        return up1;
+    }
+
+    public Image getUp2() {
+        return up2;
+    }
+
+    public Image getDown1() {
+        return down1;
+    }
+
+    public Image getDown2() {
+        return down2;
+    }
+
+    public Image getRight1() {
+        return right1;
+    }
+
+    public Image getRight2() {
+        return right2;
+    }
+
+    public Image getLeft1() {
+        return left1;
+    }
+
+    public Image getLeft2() {
+        return left2;
+    }
+
+    public void setAttackRight1(Image attackRight1) {
+        this.attackRight1 = attackRight1;
+    }
+
+    public void setAttackLeft2(Image attackLeft2) {
+        this.attackLeft2 = attackLeft2;
+    }
+
+    public void setAttackLeft1(Image attackLeft1) {
+        this.attackLeft1 = attackLeft1;
+    }
+
+    public void setAttackDown2(Image attackDown2) {
+        this.attackDown2 = attackDown2;
+    }
+
+    public void setAttackDown1(Image attackDown1) {
+        this.attackDown1 = attackDown1;
+    }
+
+    public void setAttackUp2(Image attackUp2) {
+        this.attackUp2 = attackUp2;
+    }
+
+    public void setAttackUp1(Image attackUp1) {
+        this.attackUp1 = attackUp1;
+    }
+
+    public void setAttackRight2(Image attackRight2) {
+        this.attackRight2 = attackRight2;
+    }
+
+    public Image getAttackUp1() {
+        return attackUp1;
+    }
+
+    public Image getAttackUp2() {
+        return attackUp2;
+    }
+
+    public Image getAttackDown1() {
+        return attackDown1;
+    }
+
+    public Image getAttackDown2() {
+        return attackDown2;
+    }
+
+    public Image getAttackLeft1() {
+        return attackLeft1;
+    }
+
+    public Image getAttackLeft2() {
+        return attackLeft2;
+    }
+
+    public Image getAttackRight1() {
+        return attackRight1;
+    }
+
+    public Image getAttackRight2() {
+        return attackRight2;
     }
 }

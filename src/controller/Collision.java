@@ -104,8 +104,6 @@ public class Collision {
 
                 target[i].getHitbox().setY(target[i].getSolidHitboxDefaultY());
                 target[i].getHitbox().setX(target[i].getSolidHitboxDefaultX());
-
-
             }
         }
         return index;
