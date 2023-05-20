@@ -66,7 +66,7 @@ public class Player extends Entity {
 
             // Check monster collision
             int monsterIndex = this.getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonster());
-
+            contactMonster(monsterIndex);
 
             // If collision is false, player can move
             if (this.getCollisionOn() == false) {
@@ -94,6 +94,23 @@ public class Player extends Entity {
                     this.setSpriteNumber(1);
                 }
                 this.setSpriteCounter(0);
+            }
+        }
+
+        if (this.isInvincible()) {
+            this.setInvincibleCounter(this.getInvincibleCounter() + 1);
+            if (this.getInvincibleCounter() > FPS) {
+                this.setInvincible(false);
+                this.setInvincibleCounter(0);
+            }
+        }
+    }
+
+    public void contactMonster(int index) {
+        if (index != 999) {
+            if (!this.isInvincible()) {
+                this.setLife(this.getLife() - 1);
+                this.setInvincible(true);
             }
         }
     }

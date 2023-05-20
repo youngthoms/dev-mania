@@ -71,8 +71,16 @@ public class MonsterGreenSlime extends Entity {
         setAction();
         setCollisionOn(false);
         getGamePanel().getCollisionChecker().checkTile(this);
-        getGamePanel().getCollisionChecker().checkPlayer(this);
         getGamePanel().getColisionObject().checkObject(this, false);
+        boolean contactPlayer = getGamePanel().getCollisionChecker().checkPlayer(this);
+
+        if (contactPlayer) {
+            Player player = this.getGamePanel().getPlayer();
+            if (!player.isInvincible()) {
+                player.setLife(player.getLife() - 1);
+                player.setInvincible(true);
+            }
+        }
 
         if (!this.getCollisionOn()) {
             switch (getDirection()) {

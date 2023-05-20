@@ -111,7 +111,8 @@ public class Collision {
         return index;
     }
 
-    public void checkPlayer(Entity entity) {
+    public boolean checkPlayer(Entity entity) {
+        boolean contactPlayer = false;
         entity.getHitbox().setX(entity.getWorldX() + entity.getHitbox().getX());
         entity.getHitbox().setY(entity.getWorldY() + entity.getHitbox().getY());
         gp.getPlayer().getHitbox().setX(gp.getPlayer().getWorldX() + gp.getPlayer().getHitbox().getX());
@@ -134,6 +135,7 @@ public class Collision {
 
         if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
             entity.setCollisionOn(true);
+            contactPlayer = true;
         }
 
         entity.getHitbox().setY(entity.getsolidHitboxDefaultY());
@@ -141,5 +143,7 @@ public class Collision {
 
         gp.getPlayer().getHitbox().setY(gp.getPlayer().getSolidHitboxDefaultY());
         gp.getPlayer().getHitbox().setX(gp.getPlayer().getSolidHitboxDefaultX());
+
+        return contactPlayer;
     }
 }

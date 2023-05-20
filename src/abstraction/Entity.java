@@ -17,6 +17,8 @@ public abstract class Entity {
     private Rectangle hitbox;
     private String direction;
     private boolean collisionOn = false;
+    private boolean invincible = false;
+    private int invincibleCounter = 0;
     private int screenX, screenY;
     public static final int SPRITE_COUNTER_NUMBER = 9;
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
@@ -35,6 +37,22 @@ public abstract class Entity {
         this.setWorldY(worldY);
         this.setSpeed(speed);
         this.setDirection(direction);
+    }
+
+    public int getInvincibleCounter() {
+        return invincibleCounter;
+    }
+
+    public boolean isInvincible() {
+        return invincible;
+    }
+
+    public void setInvincibleCounter(int invincibleCounter) {
+        this.invincibleCounter = invincibleCounter;
+    }
+
+    public void setInvincible(boolean invincible) {
+        this.invincible = invincible;
     }
 
     public int getSolidHitboxDefaultY() {
@@ -211,10 +229,10 @@ public abstract class Entity {
         int screenX = getWorldX() - gp.getPlayer().getWorldX() + gp.getPlayer().getScreenX();
         int screenY = getWorldY() - gp.getPlayer().getWorldY() + gp.getPlayer().getScreenY();
 
-        if (worldX + gp.TILE_SIZE > gp.getPlayer().getWorldX() - gp.getPlayer().getScreenX() &&
-                worldX - gp.TILE_SIZE < gp.getPlayer().getWorldX() + gp.getPlayer().getScreenX() &&
-                worldY + gp.TILE_SIZE > gp.getPlayer().getWorldY() - gp.getPlayer().getScreenY() &&
-                worldY - gp.TILE_SIZE < gp.getPlayer().getWorldY() + gp.getPlayer().getScreenY()) {
+        if (worldX + TILE_SIZE > gp.getPlayer().getWorldX() - gp.getPlayer().getScreenX() &&
+                worldX - TILE_SIZE < gp.getPlayer().getWorldX() + gp.getPlayer().getScreenX() &&
+                worldY + TILE_SIZE > gp.getPlayer().getWorldY() - gp.getPlayer().getScreenY() &&
+                worldY - TILE_SIZE < gp.getPlayer().getWorldY() + gp.getPlayer().getScreenY()) {
 
 
             switch (this.getDirection()) {
@@ -252,9 +270,10 @@ public abstract class Entity {
                     break;
             }
         }
-
+        if (this.isInvincible()) {
+            gc.strokeText("-1", screenX, screenY);
+        }
         gc.drawImage(image, screenX, screenY, getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE);
-
     }
 
 
