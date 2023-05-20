@@ -2,6 +2,7 @@ package view;
 
 import abstraction.OBJ_heart;
 import abstraction.OBJ_key;
+import abstraction.OBJ_lifePotion;
 import abstraction.SuperObject;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -15,11 +16,10 @@ import static view.GamePanel.TILE_SIZE;
 public class UI {
     private GamePanel gp;
     private Font currentFont;
-    private Image keyImage, heart_full, heart_half, heart_blank;
+    private Image keyImage, heart_full, heart_half, heart_blank,lifePotion;
     private boolean messageOn = false;
     private String message = "";
     private String currentDialogue = "";
-
     public UI(GamePanel gp) {
         this.gp = gp;
         this.currentFont = Font.font("Arial", 40);
@@ -31,6 +31,8 @@ public class UI {
         heart_full = heart.getImage();
         heart_half = heart.getImage1();
         heart_blank = heart.getImage2();
+        SuperObject lifePotion = new OBJ_lifePotion();
+        this.lifePotion = lifePotion.getImage();
     }
 
     public void showMessage(String message) {
@@ -113,8 +115,9 @@ public class UI {
         gc.setStroke(Color.WHITE);
         gc.drawImage(keyImage, TILE_SIZE / 2, TILE_SIZE + (TILE_SIZE / 2), TILE_SIZE, TILE_SIZE);
         gc.strokeText("x " + this.gp.getPlayer().getHasKey(), 74, 65 + TILE_SIZE);
+        gc.drawImage(lifePotion, TILE_SIZE / 2, 2.5*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        gc.strokeText("x " + this.gp.getPlayer().getHasLifePotion(), 74, 110 + TILE_SIZE);
     }
-
     public String getCurrentDialogue() {
         return currentDialogue;
     }

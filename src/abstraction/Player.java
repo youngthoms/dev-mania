@@ -13,7 +13,7 @@ public class Player extends Entity {
     private int hasKey = 0;
     public static final String RES_URL = "file:res" + File.separator + "player";
     KeyHandler keyH;
-
+    private int hasLifePotion = 0;
     public Player(GamePanel g, KeyHandler keyH) {
         super(g);
         this.keyH = keyH;
@@ -111,7 +111,28 @@ public class Player extends Entity {
                         getGamePanel().object[index] = null;
                     }
                     break;
+                case "Boots" :
+                    this.setSpeed(8);
+                    getGamePanel().object[index] = null;
 
+                case "Heart":
+                    if (this.getLife()<getMaxLife()-2){
+                        setLife(getLife()+2);
+                        getGamePanel().object[index] = null;
+                    }
+                    else if (this.getLife()<getMaxLife()){
+                        setLife(getMaxLife());
+                        getGamePanel().object[index] = null;
+                    }
+                    break;
+                case "Teleporteur":
+                    this.setWorldX(33*getGamePanel().TILE_SIZE);
+                    this.setWorldY(7*getGamePanel().TILE_SIZE);
+                    break;
+                case "LifePotion" :
+                    setHasLifePotion(getHasLifePotion()+1);
+                    getGamePanel().object[index] = null;
+                    break;
             }
 
         }
@@ -136,5 +157,13 @@ public class Player extends Entity {
 
     public void setHasKey(int hasKey) {
         this.hasKey = hasKey;
+    }
+
+    public int getHasLifePotion() {
+        return hasLifePotion;
+    }
+
+    public void setHasLifePotion(int hasLifePotion) {
+        this.hasLifePotion = hasLifePotion;
     }
 }

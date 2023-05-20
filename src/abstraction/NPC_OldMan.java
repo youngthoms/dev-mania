@@ -104,7 +104,7 @@ public class NPC_OldMan extends Entity {
     }
 
     public void setDialogue(){
-        dialogues[0]="Hello";
+        dialogues[0]="May this black hole \ngo somewhere ...";
     }
 
     public void speak(){

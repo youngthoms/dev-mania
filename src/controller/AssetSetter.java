@@ -1,8 +1,6 @@
 package controller;
 
-import abstraction.NPC_OldMan;
-import abstraction.OBJ_door;
-import abstraction.OBJ_key;
+import abstraction.*;
 import view.GamePanel;
 
 public class AssetSetter {
@@ -22,6 +20,21 @@ public class AssetSetter {
         gp.object[1].setWorldX(23 * gp.TILE_SIZE);
         gp.object[1].setWorldY(10 * gp.TILE_SIZE);
 
+        gp.object[2] = new OBJ_boots();
+        gp.object[2].setWorldX(23 * gp.TILE_SIZE);
+        gp.object[2].setWorldY(11 * gp.TILE_SIZE);
+
+        gp.object[3] = new OBJ_lifePotion();
+        gp.object[3].setWorldX(23 * gp.TILE_SIZE);
+        gp.object[3].setWorldY(12 * gp.TILE_SIZE);
+
+        gp.object[4] = new OBJ_Teleporteur();
+        gp.object[4].setWorldX(23 * gp.TILE_SIZE);
+        gp.object[4].setWorldY(18 * gp.TILE_SIZE);
+
+        gp.object[5] = new OBJ_heart();
+        gp.object[5].setWorldX(23 * gp.TILE_SIZE);
+        gp.object[5].setWorldY(19 * gp.TILE_SIZE);
     }
 
     public void setNPC() {

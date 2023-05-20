@@ -34,6 +34,11 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                         gp.setGameState(gp.getPauseState());
                     case I:
                         interract = true;
+                    case SPACE:
+                        if (gp.getPlayer().getHasLifePotion()>0){
+                            gp.getPlayer().setLife(gp.getPlayer().getMaxLife());
+                            gp.getPlayer().setHasLifePotion(gp.getPlayer().getHasLifePotion()-1);
+                        }
                 }
             } else if (event.getEventType() == KeyEvent.KEY_RELEASED) {
                 switch (event.getCode()) {
