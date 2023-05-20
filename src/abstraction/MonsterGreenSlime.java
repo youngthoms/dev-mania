@@ -28,14 +28,14 @@ public class MonsterGreenSlime extends Entity {
     }
 
     public void getImage() {
-        setUp1(new Image("file:res/monster/greenslime_down_1.png"));
-        setUp2(new Image("file:res/monster/greenslime_down_2.png"));
-        setDown1(new Image("file:res/monster/greenslime_down_1.png"));
-        setDown2(new Image("file:res/monster/greenslime_down_2.png"));
-        setLeft1(new Image("file:res/monster/greenslime_down_1.png"));
-        setLeft2(new Image("file:res/monster/greenslime_down_2.png"));
-        setRight1(new Image("file:res/monster/greenslime_down_1.png"));
-        setRight2(new Image("file:res/monster/greenslime_down_2.png"));
+        setUp1(new Image("res/monster/greenslime_down_1.png"));
+        setUp2(new Image("res/monster/greenslime_down_2.png"));
+        setDown1(new Image("res/monster/greenslime_down_1.png"));
+        setDown2(new Image("res/monster/greenslime_down_2.png"));
+        setLeft1(new Image("res/monster/greenslime_down_1.png"));
+        setLeft2(new Image("res/monster/greenslime_down_2.png"));
+        setRight1(new Image("res/monster/greenslime_down_1.png"));
+        setRight2(new Image("res/monster/greenslime_down_2.png"));
     }
 
     public void setAction() {

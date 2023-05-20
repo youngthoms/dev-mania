@@ -13,7 +13,7 @@ import static view.GamePanel.*;
 
 public class Player extends Entity {
     private int hasKey = 0;
-    public static final String RES_URL = "file:res" + File.separator + "player";
+    public static final String RES_URL = "res" + File.separator + "player";
     KeyHandler keyH;
     private int hasLifePotion = 0;
 

@@ -8,7 +8,7 @@ public class OBJ_Teleporteur extends SuperObject {
 
     public OBJ_Teleporteur() {
         setName("Teleporteur");
-        setImage(new Image("file:res/bonus/teleporteur.png", TILE_SIZE, TILE_SIZE, false, false));
+        setImage(new Image("res/bonus/teleporteur.png", TILE_SIZE, TILE_SIZE, false, false));
     }
 }
 

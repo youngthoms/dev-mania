@@ -23,25 +23,25 @@ public class TileManager {
 
     public void getTileImage() {
         tile[0] = new Tile();
-        tile[0].setImage(new Image("file:res/map/grass.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[0].setImage(new Image("res/map/grass.png", TILE_SIZE, TILE_SIZE, false, false));
 
         tile[1] = new Tile();
-        tile[1].setImage(new Image("file:res/map/wall.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[1].setImage(new Image("res/map/wall.png", TILE_SIZE, TILE_SIZE, false, false));
         tile[1].setAsObstacle();
 
         tile[2] = new Tile();
-        tile[2].setImage(new Image("file:res/map/water.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[2].setImage(new Image("res/map/water.png", TILE_SIZE, TILE_SIZE, false, false));
         tile[2].setAsObstacle();
 
         tile[3] = new Tile();
-        tile[3].setImage(new Image("file:res/map/earth.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[3].setImage(new Image("res/map/earth.png", TILE_SIZE, TILE_SIZE, false, false));
 
         tile[4] = new Tile();
-        tile[4].setImage(new Image("file:res/map/tree.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[4].setImage(new Image("res/map/tree.png", TILE_SIZE, TILE_SIZE, false, false));
         tile[4].setAsObstacle();
 
         tile[5] = new Tile();
-        tile[5].setImage(new Image("file:res/map/sand.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[5].setImage(new Image("res/map/sand.png", TILE_SIZE, TILE_SIZE, false, false));
     }
 
     public int[][] getMapTileNum() {
@@ -54,7 +54,8 @@ public class TileManager {
 
     public void loadMap(String filePath) {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            InputStream is = TileManager.class.getClassLoader().getResourceAsStream(filePath);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int col = 0, row = 0;
             String line;
             while (col < MAX_WORLD_COLUMN && row < MAX_WORLD_ROW && (line = br.readLine()) != null) {
