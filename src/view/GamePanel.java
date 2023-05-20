@@ -1,9 +1,6 @@
 package view;
 
-import abstraction.Entity;
-import abstraction.Player;
-import abstraction.SuperObject;
-import abstraction.TileManager;
+import abstraction.*;
 import controller.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -46,6 +43,7 @@ public class GamePanel extends Canvas implements Runnable {
     private ObjectColisionChecker colisionObject;
     public SuperObject object[] = new SuperObject[10];
     private Entity npc[] = new Entity[10];
+    private Entity monster[] = new Entity[20];
     public AssetSetter assetSetter = new AssetSetter(this);
     private EventHandler eventHandler;
 
@@ -57,6 +55,10 @@ public class GamePanel extends Canvas implements Runnable {
         this.ui = new UI(this);
         this.colisionObject = new ObjectColisionChecker(this);
         this.eventHandler = new EventHandler(this);
+    }
+
+    public Entity[] getMonster() {
+        return monster;
     }
 
     public Player getPlayer() {
@@ -120,6 +122,12 @@ public class GamePanel extends Canvas implements Runnable {
                     ent.update();
                 }
             }
+
+            for (Entity ent : monster) {
+                if (ent != null) {
+                    ent.update();
+                }
+            }
         }
         if (getGameState() == getPauseState()) {
 
@@ -144,7 +152,11 @@ public class GamePanel extends Canvas implements Runnable {
                 ent.draw(gc);
             }
         }
-
+        for (Entity ent : this.getMonster()) {
+            if (ent != null) {
+                ent.draw(gc);
+            }
+        }
         player.draw(gc);
         ui.draw(gc);
     }
@@ -156,6 +168,7 @@ public class GamePanel extends Canvas implements Runnable {
     public void setUpGame() {
         assetSetter.setObject();
         assetSetter.setNPC();
+        assetSetter.setMonster();
         setGameState(getPlayState());
     }
 

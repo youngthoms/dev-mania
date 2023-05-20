@@ -80,36 +80,23 @@ public class Collision {
                 target[i].getHitbox().setY(target[i].getWorldY() + target[i].getHitbox().getY());
 
                 switch (entity.getDirection()) {
-
                     case "up":
                         entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
-                        if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
-                            entity.setCollisionOn(true);
-                            index = i;
-                        }
                         break;
                     case "down":
                         entity.getHitbox().setY(entity.getHitbox().getY() + entity.getSpeed());
-
-                        if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
-                            entity.setCollisionOn(true);
-                            index = i;
-                        }
                         break;
                     case "right":
                         entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
-                        if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
-                            entity.setCollisionOn(true);
-                            index = i;
-                        }
                         break;
                     case "left":
                         entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
-                        if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
-                            entity.setCollisionOn(true);
-                            index = i;
-                        }
                         break;
+                }
+
+                if (entity.getHitbox().intersects(target[i].getHitbox().getBoundsInLocal())) {
+                    entity.setCollisionOn(true);
+                    index = i;
                 }
 
                 entity.getHitbox().setY(entity.getsolidHitboxDefaultY());
@@ -133,33 +120,20 @@ public class Collision {
         switch (entity.getDirection()) {
             case "up":
                 entity.getHitbox().setY(entity.getHitbox().getY() - entity.getSpeed());
-                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
-                    entity.setCollisionOn(true);
-
-                }
                 break;
             case "down":
                 entity.getHitbox().setY(entity.getHitbox().getY() + entity.getSpeed());
-
-                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
-                    entity.setCollisionOn(true);
-
-                }
                 break;
             case "right":
                 entity.getHitbox().setX(entity.getHitbox().getX() + entity.getSpeed());
-                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
-                    entity.setCollisionOn(true);
-
-                }
                 break;
             case "left":
                 entity.getHitbox().setX(entity.getHitbox().getX() - entity.getSpeed());
-                if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
-                    entity.setCollisionOn(true);
-
-                }
                 break;
+        }
+
+        if (entity.getHitbox().intersects(gp.getPlayer().getHitbox().getBoundsInLocal())) {
+            entity.setCollisionOn(true);
         }
 
         entity.getHitbox().setY(entity.getsolidHitboxDefaultY());

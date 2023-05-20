@@ -26,11 +26,15 @@ public abstract class Entity {
         this.gp = g;
         this.setScreenX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
         this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
-        this.setHitbox(new Rectangle(8, 16, 32, 32));
-        this.setSolidHitboxDefaultX((int) this.getHitbox().getX());
-        this.setSolidHitboxDefaultY((int) this.getHitbox().getY());
-        this.setDefaultValues();
+
         dialogues = new String[15];
+    }
+
+    public void setDefaultValues(int worldX, int worldY, int speed, String direction) {
+        this.setWorldX(worldX);
+        this.setWorldY(worldY);
+        this.setSpeed(speed);
+        this.setDirection(direction);
     }
 
     public int getSolidHitboxDefaultY() {
@@ -60,8 +64,6 @@ public abstract class Entity {
     public void setAction() {
     }
 
-    ;
-
     public void update() {
     }
 
@@ -86,14 +88,6 @@ public abstract class Entity {
 
     public Rectangle getHitbox() {
         return hitbox;
-    }
-
-
-    public void setDefaultValues() {
-        this.setWorldX(TILE_SIZE * 23);
-        this.setWorldY(TILE_SIZE * 20);
-        this.setSpeed(5);
-        this.setDirection("down");
     }
 
     public void setWorldX(int worldX) {

@@ -2,6 +2,7 @@ package abstraction;
 
 import controller.KeyHandler;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 import view.GamePanel;
 
 import java.io.File;
@@ -19,11 +20,17 @@ public class Player extends Entity {
         this.keyH = keyH;
         this.getPlayerImage();
 
+        // Hitbox
+        this.setHitbox(new Rectangle(8, 16, 32, 32));
+        this.setSolidHitboxDefaultX((int) this.getHitbox().getX());
+        this.setSolidHitboxDefaultY((int) this.getHitbox().getY());
+
         // Player status
         this.setMaxLife(6); // 6 Life = 3 hearts
         this.setLife(this.getMaxLife());
-    }
 
+        this.setDefaultValues(TILE_SIZE * 23, TILE_SIZE * 20, 5, "down");
+    }
 
     public static String getURL(String ImageName) {
         return RES_URL + File.separator + ImageName;
@@ -53,9 +60,14 @@ public class Player extends Entity {
             // Check event
             this.getGamePanel().getEventHandler().checkEvent();
 
-
+            // Check NPC collision
             int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getNpc());
             interactNPC(npcIndex);
+
+            // Check monster collision
+            int monsterIndex = this.getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonster());
+
+
             // If collision is false, player can move
             if (this.getCollisionOn() == false) {
                 switch (direction) {
