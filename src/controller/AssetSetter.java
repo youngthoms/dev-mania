@@ -31,6 +31,10 @@ public class AssetSetter {
         gp.object[4] = new OBJ_Teleporteur();
         gp.object[4].setWorldX(23 * gp.TILE_SIZE);
         gp.object[4].setWorldY(18 * gp.TILE_SIZE);
+
+        gp.object[5] = new OBJ_heart();
+        gp.object[5].setWorldX(23 * gp.TILE_SIZE);
+        gp.object[5].setWorldY(19 * gp.TILE_SIZE);
     }
 
     public void setNPC() {
