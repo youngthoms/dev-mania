@@ -9,9 +9,9 @@ import static view.GamePanel.*;
 import static view.GamePanel.TILE_SIZE;
 
 /**
- * Cette classe abstraite représente une entité dans le jeu.
+ * Cette classe représente une entité dans le jeu.
  */
-public abstract class Entity {
+public class Entity {
     // Attributs de l'entité
     private int worldX, worldY, speed, life, maxLife, strength;
     private GamePanel gp;
