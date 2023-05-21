@@ -82,30 +82,63 @@ public class GamePanel extends Canvas implements Runnable {
         gameThread.start();
     }
 
+    public boolean winChest(){
+        for (SuperObject so : object){
+            if (so instanceof OBJ_door){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean winMonster(){
+        for(Entity ent : monster){
+            if (ent != null){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     @Override
     public void run() {
         while (gameThread != null) {
-            double drawInterval = 1000000000 / FPS; // 0.01666 seconds
-            double nextDrawTime = System.nanoTime() + drawInterval;
-            // Update information such as character position
-            update();
-            // Draw the screen with the updated information
-            draw(this.getGraphicsContext2D());
+            if(getPlayer().getLife()!=0 && winChest() == false && winMonster()==false){
+                double drawInterval = 1000000000 / FPS; // 0.01666 seconds
+                double nextDrawTime = System.nanoTime() + drawInterval;
+                // Update information such as character position
+                update();
+                // Draw the screen with the updated information
+                draw(this.getGraphicsContext2D());
 
-            try {
-                double remainingTime = nextDrawTime - System.nanoTime();
-                remainingTime = remainingTime / 1000000;
+                try {
+                    double remainingTime = nextDrawTime - System.nanoTime();
+                    remainingTime = remainingTime / 1000000;
 
-                if (remainingTime < 0) {
-                    remainingTime = 0;
+                    if (remainingTime < 0) {
+                        remainingTime = 0;
+                    }
+
+                    Thread.sleep((long) remainingTime);
+
+                    nextDrawTime += drawInterval;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-
-                Thread.sleep((long) remainingTime);
-
-                nextDrawTime += drawInterval;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+            if (getPlayer().getLife()==0){
+                this.getUi().setCurrentDialogue("You loose");
+                getUi().drawDialogueScreen();break;
+            }
+            else if(winChest() == true || winMonster()==true) {
+                this.getUi().setCurrentDialogue("Win");
+                getUi().drawDialogueScreen();
+                break;
+            }
+
+
+
         }
     }
 
