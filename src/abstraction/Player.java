@@ -10,13 +10,21 @@ import java.io.File;
 
 import static view.GamePanel.*;
 
-
+/**
+ * Classe représentant le joueur dans le jeu.
+ */
 public class Player extends Entity {
     private int hasKey = 0;
     public static final String RES_URL = "res" + File.separator + "player";
     KeyHandler keyH;
     private int hasLifePotion = 0;
 
+    /**
+     * Constructeur de la classe Player.
+     *
+     * @param g     Le GamePanel associé.
+     * @param keyH  L'objet KeyHandler associé.
+     */
     public Player(GamePanel g, KeyHandler keyH) {
         super(g);
         this.keyH = keyH;
@@ -38,10 +46,19 @@ public class Player extends Entity {
         this.setDefaultValues(TILE_SIZE * 23, TILE_SIZE * 20, 5, "down");
     }
 
-    public static String getURL(String ImageName) {
-        return RES_URL + File.separator + ImageName;
+    /**
+     * Méthode statique pour obtenir l'URL de l'image du joueur.
+     *
+     * @param imageName  Le nom de l'image.
+     * @return           L'URL de l'image.
+     */
+    public static String getURL(String imageName) {
+        return RES_URL + File.separator + imageName;
     }
 
+    /**
+     * Met à jour le joueur.
+     */
     public void update() {
         String direction = this.getDirection();
         if (this.isAttacking()) {
@@ -116,6 +133,9 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Effectue une animation d'attaque du joueur.
+     */
     public void attackingAnimation() {
         this.setSpriteCounter(this.getSpriteCounter() + 1);
 
@@ -125,13 +145,13 @@ public class Player extends Entity {
         if (this.getSpriteCounter() > 5 && this.getSpriteCounter() <= 25) {
             this.setSpriteNumber(2);
 
-            // Save current worldX, worldY and Hitbox
+            // Sauvegarde des coordonnées actuelles (worldX, worldY) et de la Hitbox
             int currentWorldX = this.getWorldX();
             int currentWorldY = this.getWorldY();
             int hitboxWidth = (int) this.getHitbox().getWidth();
             int hitboxHeight = (int) this.getHitbox().getHeight();
 
-            // Adjust coordinates for the attackArea
+            // Ajuste les coordonnées pour la zone d'attaque (attackArea)
             switch (this.getDirection()) {
                 case "up":
                     this.setWorldY(this.getWorldY() - (int) this.getAttackHitbox().getHeight());
@@ -150,9 +170,11 @@ public class Player extends Entity {
             this.getHitbox().setWidth(this.getAttackHitbox().getWidth());
             this.getHitbox().setHeight(this.getAttackHitbox().getHeight());
 
+            // Vérifie les collisions avec les monstres et les endommage
             int monsterIndex = this.getGamePanel().getCollisionChecker().checkEntity(this, this.getGamePanel().getMonster());
             damageMonster(monsterIndex);
 
+            // Rétablit les coordonnées et la Hitbox d'origine
             this.setWorldX(currentWorldX);
             this.setWorldY(currentWorldY);
             this.getHitbox().setWidth(hitboxWidth);
@@ -165,6 +187,11 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Gère la collision avec un monstre et réduit la vie du joueur si celui-ci n'est pas invincible.
+     *
+     * @param index L'indice du monstre avec lequel le joueur est en collision.
+     */
     public void contactMonster(int index) {
         if (index != 999) {
             if (!this.isInvincible()) {
@@ -174,6 +201,11 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Endommage un monstre en réduisant sa vie et le rend invincible.
+     *
+     * @param index L'indice du monstre à endommager.
+     */
     public void damageMonster(int index) {
         if (index != 999) {
             Entity monster = this.getGamePanel().getMonster()[index];
@@ -188,17 +220,26 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Interagit avec un NPC en affichant son dialogue si le joueur a appuyé sur la touche d'interaction.
+     *
+     * @param index L'indice du NPC avec lequel le joueur interagit.
+     */
     public void interactNPC(int index) {
         if (index != 999) {
             if (getGamePanel().getKeyH().interract) {
                 getGamePanel().setGameState(getGamePanel().getDialogueState());
                 getGamePanel().getNpc()[index].speak();
             }
-
         }
         getGamePanel().getKeyH().interract = false;
     }
 
+    /**
+     * Ramasse un objet du jeu et effectue l'action correspondante.
+     *
+     * @param index L'indice de l'objet à ramasser.
+     */
     public void pickUpObject(int index) {
         if (index != 999) {
             String objectName = getGamePanel().object[index].getName();
@@ -216,7 +257,7 @@ public class Player extends Entity {
                 case "Boots":
                     this.setSpeed(8);
                     getGamePanel().object[index] = null;
-
+                    break;
                 case "Heart":
                     if (this.getLife() < getMaxLife() - 2) {
                         setLife(getLife() + 2);
@@ -235,11 +276,12 @@ public class Player extends Entity {
                     getGamePanel().object[index] = null;
                     break;
             }
-
         }
-
     }
 
+    /**
+     * Charge les images du joueur à partir des fichiers correspondants.
+     */
     public void getPlayerImage() {
         setUp1(new Image(getURL("boy_up_1_2.png"), TILE_SIZE, TILE_SIZE, false, false));
         setUp2(new Image(getURL("boy_up_2_2.png"), TILE_SIZE, TILE_SIZE, false, false));
@@ -251,6 +293,9 @@ public class Player extends Entity {
         setRight2(new Image(getURL("boy_right_2_2.png"), TILE_SIZE, TILE_SIZE, false, false));
     }
 
+    /**
+     * Charge les images d'attaque du joueur à partir des fichiers correspondants.
+     */
     public void getPlayerAttackImage() {
         setAttackUp1(new Image(getURL("boy_attack_up_1.png"), TILE_SIZE, TILE_SIZE * 2, false, false));
         setAttackUp2(new Image(getURL("boy_attack_up_2.png"), TILE_SIZE, TILE_SIZE * 2, false, false));
@@ -262,28 +307,57 @@ public class Player extends Entity {
         setAttackRight2(new Image(getURL("boy_attack_right_2.png"), TILE_SIZE * 2, TILE_SIZE, false, false));
     }
 
+
+    /**
+     * Retourne le nombre de clés que le joueur possède.
+     *
+     * @return Le nombre de clés que le joueur possède.
+     */
     public int getHasKey() {
         return hasKey;
     }
 
+    /**
+     * Définit le nombre de clés que le joueur possède.
+     *
+     * @param hasKey Le nombre de clés à définir.
+     */
     public void setHasKey(int hasKey) {
         this.hasKey = hasKey;
     }
 
+    /**
+     * Retourne le nombre de potions de vie que le joueur possède.
+     *
+     * @return Le nombre de potions de vie que le joueur possède.
+     */
     public int getHasLifePotion() {
         return hasLifePotion;
     }
 
+    /**
+     * Définit le nombre de potions de vie que le joueur possède.
+     *
+     * @param hasLifePotion Le nombre de potions de vie à définir.
+     */
     public void setHasLifePotion(int hasLifePotion) {
         this.hasLifePotion = hasLifePotion;
     }
 
+    /**
+     * Lance une attaque du joueur si la touche d'attaque est enfoncée.
+     */
     public void attack() {
         if (this.getGamePanel().getKeyH().attacking) {
             this.setAttacking(true);
         }
     }
 
+    /**
+     * Dessine le joueur sur le contexte graphique donné.
+     *
+     * @param gc Le contexte graphique sur lequel dessiner le joueur.
+     */
     public void draw(GraphicsContext gc) {
         Image image = null;
 
@@ -363,4 +437,5 @@ public class Player extends Entity {
         }
         gc.drawImage(image, this.getScreenX(), this.getScreenY(), image.getRequestedWidth(), image.getRequestedHeight());
     }
+
 }
