@@ -197,4 +197,5 @@ public class SuperObject {
     public void setCollision(boolean collision) {
         this.collision = collision;
     }
+
 }

@@ -4,17 +4,25 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import view.GamePanel;
 
+/**
+ * Gère les événements clavier pour le jeu.
+ */
 public class KeyHandler implements EventHandler<KeyEvent> {
     GamePanel gp;
     public boolean up, down, left, right, interract, attacking;
 
+    /**
+     * Initialise un nouvel objet KeyHandler.
+     *
+     * @param gp Le panneau de jeu associé.
+     */
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
     }
 
     @Override
     public void handle(KeyEvent event) {
-        //PLAY STATE
+        // PLAY STATE
         if (gp.getGameState() == gp.getPlayState()) {
             if (event.getEventType() == KeyEvent.KEY_PRESSED) {
                 switch (event.getCode()) {
@@ -44,9 +52,9 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                         attacking = true;
                         break;
                     case SPACE:
-                        if (gp.getPlayer().getHasLifePotion()>0){
+                        if (gp.getPlayer().getHasLifePotion() > 0) {
                             gp.getPlayer().setLife(gp.getPlayer().getMaxLife());
-                            gp.getPlayer().setHasLifePotion(gp.getPlayer().getHasLifePotion()-1);
+                            gp.getPlayer().setHasLifePotion(gp.getPlayer().getHasLifePotion() - 1);
                         }
                         break;
                 }
@@ -70,7 +78,7 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                 }
             }
         }
-        //PAUSE STATE
+        // PAUSE STATE
         else if (gp.getGameState() == gp.getPauseState()) {
             if (event.getEventType() == KeyEvent.KEY_PRESSED) {
                 switch (event.getCode()) {
@@ -79,7 +87,7 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                 }
             }
         }
-        //DIALOGUES STATE
+        // DIALOGUES STATE
         else if (gp.getGameState() == gp.getDialogueState()) {
             if (event.getEventType() == KeyEvent.KEY_PRESSED) {
                 switch (event.getCode()) {

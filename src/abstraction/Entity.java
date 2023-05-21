@@ -698,83 +698,184 @@ public abstract class Entity {
         return down2;
     }
 
+    /**
+     * Renvoie l'image "right1".
+     *
+     * @return L'image "right1".
+     */
     public Image getRight1() {
         return right1;
     }
 
+    /**
+     * Renvoie l'image "right2".
+     *
+     * @return L'image "right2".
+     */
     public Image getRight2() {
         return right2;
     }
 
+    /**
+     * Renvoie l'image "left1".
+     *
+     * @return L'image "left1".
+     */
     public Image getLeft1() {
         return left1;
     }
 
+    /**
+     * Renvoie l'image "left2".
+     *
+     * @return L'image "left2".
+     */
     public Image getLeft2() {
         return left2;
     }
 
+    /**
+     * Définit l'image "attackRight1".
+     *
+     * @param attackRight1 L'image "attackRight1".
+     */
     public void setAttackRight1(Image attackRight1) {
         this.attackRight1 = attackRight1;
     }
 
+    /**
+     * Définit l'image "attackLeft2".
+     *
+     * @param attackLeft2 L'image "attackLeft2".
+     */
     public void setAttackLeft2(Image attackLeft2) {
         this.attackLeft2 = attackLeft2;
     }
 
+    /**
+     * Définit l'image "attackLeft1".
+     *
+     * @param attackLeft1 L'image "attackLeft1".
+     */
     public void setAttackLeft1(Image attackLeft1) {
         this.attackLeft1 = attackLeft1;
     }
 
+    /**
+     * Définit l'image "attackDown2".
+     *
+     * @param attackDown2 L'image "attackDown2".
+     */
     public void setAttackDown2(Image attackDown2) {
         this.attackDown2 = attackDown2;
     }
 
+    /**
+     * Définit l'image "attackDown1".
+     *
+     * @param attackDown1 L'image "attackDown1".
+     */
     public void setAttackDown1(Image attackDown1) {
         this.attackDown1 = attackDown1;
     }
 
+    /**
+     * Définit l'image "attackUp2".
+     *
+     * @param attackUp2 L'image "attackUp2".
+     */
     public void setAttackUp2(Image attackUp2) {
         this.attackUp2 = attackUp2;
     }
 
+    /**
+     * Définit l'image "attackUp1".
+     *
+     * @param attackUp1 L'image "attackUp1".
+     */
     public void setAttackUp1(Image attackUp1) {
         this.attackUp1 = attackUp1;
     }
 
+    /**
+     * Définit l'image "attackRight2".
+     *
+     * @param attackRight2 L'image "attackRight2".
+     */
     public void setAttackRight2(Image attackRight2) {
         this.attackRight2 = attackRight2;
     }
 
+    /**
+     * Renvoie l'image "attackUp1".
+     *
+     * @return L'image "attackUp1".
+     */
     public Image getAttackUp1() {
         return attackUp1;
     }
 
+    /**
+     * Renvoie l'image "attackUp2".
+     *
+     * @return L'image "attackUp2".
+     */
     public Image getAttackUp2() {
         return attackUp2;
     }
 
+    /**
+     * Renvoie l'image "attackDown1".
+     *
+     * @return L'image "attackDown1".
+     */
     public Image getAttackDown1() {
         return attackDown1;
     }
 
+    /**
+     * Renvoie l'image "attackDown2".
+     *
+     * @return L'image "attackDown2".
+     */
     public Image getAttackDown2() {
         return attackDown2;
     }
 
+    /**
+     * Renvoie l'image "attackLeft1".
+     *
+     * @return L'image "attackLeft1".
+     */
     public Image getAttackLeft1() {
         return attackLeft1;
     }
 
+    /**
+     * Renvoie l'image "attackLeft2".
+     *
+     * @return L'image "attackLeft2".
+     */
     public Image getAttackLeft2() {
         return attackLeft2;
     }
 
+    /**
+     * Renvoie l'image "attackRight1".
+     *
+     * @return L'image "attackRight1".
+     */
     public Image getAttackRight1() {
         return attackRight1;
     }
 
+    /**
+     * Renvoie l'image "attackRight2".
+     *
+     * @return L'image "attackRight2".
+     */
     public Image getAttackRight2() {
         return attackRight2;
     }
+
 }
