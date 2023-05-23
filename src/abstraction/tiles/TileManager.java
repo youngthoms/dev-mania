@@ -1,5 +1,6 @@
-package abstraction;
+package abstraction.tiles;
 
+import abstraction.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import view.GamePanel;

@@ -441,4 +441,11 @@ public class Player extends Entity {
         gc.drawImage(image, this.getScreenX(), this.getScreenY(), image.getRequestedWidth(), image.getRequestedHeight());
     }
 
+    public void loseKey() {
+        int numberOfKeys = this.getHasKey();
+        if (numberOfKeys > 0) {
+            this.setHasKey(numberOfKeys - 1);
+        }
+    }
+
 }

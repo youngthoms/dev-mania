@@ -1,6 +1,8 @@
 package controller;
 
 import abstraction.*;
+import abstraction.monsters.Monster_greenSlime;
+import abstraction.monsters.Monster_redSlime;
 import view.GamePanel;
 
 import static view.GamePanel.TILE_SIZE;
@@ -54,13 +56,17 @@ public class AssetSetter {
     }
 
     public void setMonster() {
-        gp.getMonster()[0] = new MonsterGreenSlime(gp);
+        gp.getMonster()[0] = new Monster_greenSlime(gp);
         gp.getMonster()[0].setWorldX(TILE_SIZE * 23);
         gp.getMonster()[0].setWorldY(TILE_SIZE * 36);
 
-        gp.getMonster()[1] = new MonsterGreenSlime(gp);
+        gp.getMonster()[1] = new Monster_greenSlime(gp);
         gp.getMonster()[1].setWorldX(TILE_SIZE * 23);
         gp.getMonster()[1].setWorldY(TILE_SIZE * 37);
+
+        gp.getMonster()[2] = new Monster_redSlime(gp);
+        gp.getMonster()[2].setWorldX(TILE_SIZE * 23);
+        gp.getMonster()[2].setWorldY(TILE_SIZE * 38);
     }
 
 }

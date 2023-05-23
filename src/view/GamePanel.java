@@ -1,10 +1,10 @@
 package view;
 
 import abstraction.*;
+import abstraction.tiles.TileManager;
 import controller.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 /**
  * Cette classe représente le panneau de jeu.
