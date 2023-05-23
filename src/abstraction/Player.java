@@ -22,8 +22,8 @@ public class Player extends Entity {
     /**
      * Constructeur de la classe Player.
      *
-     * @param g     Le GamePanel associé.
-     * @param keyH  L'objet KeyHandler associé.
+     * @param g    Le GamePanel associé.
+     * @param keyH L'objet KeyHandler associé.
      */
     public Player(GamePanel g, KeyHandler keyH) {
         super(g);
@@ -49,8 +49,8 @@ public class Player extends Entity {
     /**
      * Méthode statique pour obtenir l'URL de l'image du joueur.
      *
-     * @param imageName  Le nom de l'image.
-     * @return           L'URL de l'image.
+     * @param imageName Le nom de l'image.
+     * @return L'URL de l'image.
      */
     public static String getURL(String imageName) {
         return RES_URL + File.separator + imageName;
@@ -74,6 +74,9 @@ public class Player extends Entity {
                 this.setDirection("right");
             }
 
+            //check attack state
+            attack();
+
             // Check tile collision
             this.setCollisionOn(false);
             this.getGamePanel().getCollisionChecker().checkTile(this);
@@ -88,8 +91,6 @@ public class Player extends Entity {
             // Check NPC collision
             int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getNpc());
             interactNPC(npcIndex);
-
-            attack();
 
             // Check monster collision
             int monsterIndex = this.getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonster());
@@ -275,7 +276,7 @@ public class Player extends Entity {
                     setHasLifePotion(getHasLifePotion() + 1);
                     getGamePanel().object[index] = null;
                     break;
-                case "NoColide" :
+                case "NoColide":
                     setNoColideBonus(true);
                     getGamePanel().object[index] = null;
             }
