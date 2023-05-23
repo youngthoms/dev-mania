@@ -1,4 +1,4 @@
-package abstraction;
+package abstraction.objects;
 
 import javafx.scene.shape.Rectangle;
 import javafx.scene.canvas.GraphicsContext;

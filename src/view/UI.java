@@ -1,9 +1,9 @@
 package view;
 
-import abstraction.OBJ_heart;
-import abstraction.OBJ_key;
-import abstraction.OBJ_lifePotion;
-import abstraction.SuperObject;
+import abstraction.objects.OBJ_heart;
+import abstraction.objects.OBJ_key;
+import abstraction.objects.OBJ_lifePotion;
+import abstraction.objects.SuperObject;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;

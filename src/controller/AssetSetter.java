@@ -3,6 +3,7 @@ package controller;
 import abstraction.*;
 import abstraction.monsters.Monster_greenSlime;
 import abstraction.monsters.Monster_redSlime;
+import abstraction.objects.*;
 import view.GamePanel;
 
 import static view.GamePanel.TILE_SIZE;

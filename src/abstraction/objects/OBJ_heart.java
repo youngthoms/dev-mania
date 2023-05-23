@@ -1,7 +1,6 @@
-package abstraction;
+package abstraction.objects;
 
 import javafx.scene.image.Image;
-import view.GamePanel;
 
 import static view.GamePanel.TILE_SIZE;
 

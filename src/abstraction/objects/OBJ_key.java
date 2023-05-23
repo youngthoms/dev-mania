@@ -1,4 +1,4 @@
-package abstraction;
+package abstraction.objects;
 
 import javafx.scene.image.Image;
 
