@@ -13,7 +13,7 @@ import static view.GamePanel.TILE_SIZE;
 
 public class NPC_OldMan extends Entity {
 
-    public static final String RES_URL = "file:res" + File.separator + "npc";
+    public static final String RES_URL = "res" + File.separator + "npc";
     private int actionLockCounter = 0;
 
     public NPC_OldMan(GamePanel gp) {

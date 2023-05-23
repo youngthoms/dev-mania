@@ -37,6 +37,14 @@ public class AssetSetter {
         gp.object[5] = new OBJ_heart();
         gp.object[5].setWorldX(23 * gp.TILE_SIZE);
         gp.object[5].setWorldY(19 * gp.TILE_SIZE);
+
+        gp.object[6] = new OBJ_key();
+        gp.object[6].setWorldX(35 * TILE_SIZE);
+        gp.object[6].setWorldY(10 * TILE_SIZE);
+
+        gp.object[7] = new OBJ_noColide();
+        gp.object[7].setWorldX(37 * TILE_SIZE);
+        gp.object[7].setWorldY(10 * TILE_SIZE);
     }
 
     public void setNPC() {

@@ -8,7 +8,7 @@ public class OBJ_key extends SuperObject {
 
     public OBJ_key() {
         setName("Key");
-        setImage(new Image("file:res/bonus/key.png", TILE_SIZE, TILE_SIZE, false, false));
+        setImage(new Image("res/bonus/key.png", TILE_SIZE, TILE_SIZE, false, false));
     }
 
 }

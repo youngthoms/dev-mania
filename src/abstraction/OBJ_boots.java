@@ -8,7 +8,7 @@ public class OBJ_boots extends SuperObject{
 
     public OBJ_boots() {
         setName("Boots");
-        setImage(new Image("file:res/bonus/boots.png", TILE_SIZE, TILE_SIZE, false, false));
+        setImage(new Image("res/bonus/boots.png", TILE_SIZE, TILE_SIZE, false, false));
     }
 
 }

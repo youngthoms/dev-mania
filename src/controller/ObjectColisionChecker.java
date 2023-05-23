@@ -3,17 +3,31 @@ package controller;
 import abstraction.Entity;
 import view.GamePanel;
 
+/**
+ * Vérifie les collisions avec les objets du jeu.
+ */
 public class ObjectColisionChecker {
     GamePanel gp;
 
+    /**
+     * Initialise un nouvel objet ObjectColisionChecker.
+     *
+     * @param gp Le panneau de jeu associé.
+     */
     public ObjectColisionChecker(GamePanel gp) {
         this.gp = gp;
     }
 
+    /**
+     * Vérifie les collisions avec les objets.
+     *
+     * @param entity L'entité dont on vérifie la collision.
+     * @param player Indique s'il s'agit du joueur.
+     * @return L'index de l'objet avec lequel une collision s'est produite, ou 999 si aucune collision n'a été détectée.
+     */
     public int checkObject(Entity entity, boolean player) {
         int index = 999;
         for (int i = 0; i < gp.object.length; i++) {
-
             if (gp.object[i] != null) {
                 entity.getHitbox().setX(entity.getWorldX() + entity.getHitbox().getX());
                 entity.getHitbox().setY(entity.getWorldY() + entity.getHitbox().getY());
@@ -36,10 +50,10 @@ public class ObjectColisionChecker {
                 }
 
                 if (entity.getHitbox().intersects(gp.object[i].getHitbox().getBoundsInLocal())) {
-                    if (gp.object[i].getColision() == true) {
+                    if (gp.object[i].isCollision()) {
                         entity.setCollisionOn(true);
                     }
-                    if (player == true) {
+                    if (player) {
                         index = i;
                     }
                 }
@@ -49,8 +63,6 @@ public class ObjectColisionChecker {
 
                 gp.object[i].getHitbox().setY(gp.object[i].getHitboxDefaultY());
                 gp.object[i].getHitbox().setX(gp.object[i].getHitboxDefaultX());
-
-
             }
         }
         return index;
