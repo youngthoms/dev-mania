@@ -1,4 +1,4 @@
-package abstraction;
+package abstraction.tiles;
 
 import javafx.scene.image.Image;
 
