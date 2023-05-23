@@ -54,6 +54,10 @@ public class TileManager {
 
         tile[5] = new Tile();
         tile[5].setImage(new Image("res/map/sand.png", TILE_SIZE, TILE_SIZE, false, false));
+
+        tile[6] = new Tile();
+        tile[6].setImage(new Image("res/map/tree.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[6].setAsObstacle();
     }
 
     /**

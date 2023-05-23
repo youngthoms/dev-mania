@@ -33,9 +33,17 @@ public class Collision {
                 entityTopRow = (entityTopWorldY - entity.getSpeed()) / TILE_SIZE;
                 tileNum1 = tm.getMapTileNum()[entityLeftCol][entityTopRow];
                 tileNum2 = tm.getMapTileNum()[entityRightCol][entityTopRow];
-
-                if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
-                    entity.setCollisionOn(true);
+                if (entity.isNoColideBonus()==false){
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        entity.setCollisionOn(true);
+                    }
+                }
+                else{
+                    if(tileNum1==6 || tileNum2==6){
+                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                            entity.setCollisionOn(true);
+                        }
+                    }
                 }
                 break;
             case "down":
@@ -43,8 +51,17 @@ public class Collision {
                 tileNum1 = tm.getMapTileNum()[entityLeftCol][entityBottomRow];
                 tileNum2 = tm.getMapTileNum()[entityRightCol][entityBottomRow];
 
-                if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
-                    entity.setCollisionOn(true);
+                if (entity.isNoColideBonus()==false){
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        entity.setCollisionOn(true);
+                    }
+                }
+                else{
+                    if(tileNum1==6 || tileNum2==6){
+                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                            entity.setCollisionOn(true);
+                        }
+                    }
                 }
                 break;
             case "left":
@@ -52,8 +69,17 @@ public class Collision {
                 tileNum1 = tm.getMapTileNum()[entityLeftCol][entityTopRow];
                 tileNum2 = tm.getMapTileNum()[entityLeftCol][entityBottomRow];
 
-                if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
-                    entity.setCollisionOn(true);
+                if (entity.isNoColideBonus()==false){
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        entity.setCollisionOn(true);
+                    }
+                }
+                else{
+                    if(tileNum1==6 || tileNum2==6){
+                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                            entity.setCollisionOn(true);
+                        }
+                    }
                 }
                 break;
             case "right":
@@ -61,8 +87,17 @@ public class Collision {
                 tileNum1 = tm.getMapTileNum()[entityRightCol][entityTopRow];
                 tileNum2 = tm.getMapTileNum()[entityRightCol][entityBottomRow];
 
-                if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
-                    entity.setCollisionOn(true);
+                if (entity.isNoColideBonus()==false){
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        entity.setCollisionOn(true);
+                    }
+                }
+                else{
+                    if(tileNum1==6 || tileNum2==6){
+                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                            entity.setCollisionOn(true);
+                        }
+                    }
                 }
                 break;
         }

@@ -30,6 +30,8 @@ public class Entity {
     private Image up1, up2, down1, down2, left1, left2, right1, right2;
     private Image attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
     public String[] dialogues;
+    private boolean noColideBonus = false;
+
 
     /**
      * Constructeur de l'entité.
@@ -878,4 +880,11 @@ public class Entity {
         return attackRight2;
     }
 
+    public boolean isNoColideBonus() {
+        return noColideBonus;
+    }
+
+    public void setNoColideBonus(boolean noColideBonus) {
+        this.noColideBonus = noColideBonus;
+    }
 }

@@ -275,6 +275,9 @@ public class Player extends Entity {
                     setHasLifePotion(getHasLifePotion() + 1);
                     getGamePanel().object[index] = null;
                     break;
+                case "NoColide" :
+                    setNoColideBonus(true);
+                    getGamePanel().object[index] = null;
             }
         }
     }
