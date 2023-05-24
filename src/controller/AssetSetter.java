@@ -54,6 +54,10 @@ public class AssetSetter {
         gp.getNpc()[0] = new NPC_OldMan(this.gp);
         gp.getNpc()[0].setWorldX(21 * TILE_SIZE);
         gp.getNpc()[0].setWorldY(21 * TILE_SIZE);
+
+        gp.getNpc()[1] = new NPC_GivePotion(this.gp);
+        gp.getNpc()[1].setWorldX(23 * TILE_SIZE);
+        gp.getNpc()[1].setWorldY(23 * TILE_SIZE);
     }
 
     public void setMonster() {
