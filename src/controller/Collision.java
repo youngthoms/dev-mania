@@ -45,10 +45,10 @@ public class Collision {
                     }
 
                 }
-                if (tileNum1 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum1 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityLeftCol][entityTopRow] = 0;
                 }
-                if (tileNum2 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum2 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityRightCol][entityTopRow] = 0;
                 }
                 break;
@@ -68,10 +68,10 @@ public class Collision {
                         }
                     }
                 }
-                if (tileNum1 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum1 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityLeftCol][entityBottomRow] = 0;
                 }
-                if (tileNum2 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum2 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityRightCol][entityBottomRow] = 0;
                 }
                 break;
@@ -92,10 +92,10 @@ public class Collision {
                     }
 
                 }
-                if (tileNum1 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum1 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityLeftCol][entityTopRow] = 0;
                 }
-                if (tileNum2 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum2 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityLeftCol][entityBottomRow] = 0;
                 }
                 break;
@@ -116,10 +116,10 @@ public class Collision {
                         }
                     }
                 }
-                if (tileNum1 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum1 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityRightCol][entityTopRow] = 0;
                 }
-                if (tileNum2 == 4 && gp.getPlayer().isAttacking()) {
+                if (tileNum2 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityRightCol][entityBottomRow] = 0;
                 }
                 break;
