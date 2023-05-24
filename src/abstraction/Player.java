@@ -364,10 +364,13 @@ public class Player extends Entity {
      */
     public void draw(GraphicsContext gc) {
         Image image = null;
+        int tempScreenX = this.getScreenX();
+        int tempScreenY= this.getScreenY();
 
         switch (this.getDirection()) {
             case "up":
                 if (this.isAttacking()) {
+                    tempScreenY = this.getScreenY() - TILE_SIZE;
                     if (this.getSpriteNumber() == 1) {
                         image = getAttackUp1();
                     }
@@ -402,6 +405,7 @@ public class Player extends Entity {
                 break;
             case "left":
                 if (this.isAttacking()) {
+                    tempScreenX = this.getScreenX() - TILE_SIZE;
                     if (this.getSpriteNumber() == 1) {
                         image = getAttackLeft1();
                     }
@@ -439,7 +443,7 @@ public class Player extends Entity {
         if (this.isInvincible()) {
             gc.strokeText("-1", this.getScreenX(), this.getScreenY());
         }
-        gc.drawImage(image, this.getScreenX(), this.getScreenY(), image.getRequestedWidth(), image.getRequestedHeight());
+        gc.drawImage(image, tempScreenX, tempScreenY, image.getRequestedWidth(), image.getRequestedHeight());
     }
 
     public void loseKey() {
