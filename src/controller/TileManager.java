@@ -92,7 +92,6 @@ public class TileManager {
 
     /**
      * Charge la carte à partir d'un fichier CSV.
-     *
      */
     public void loadMap() {
         String filePath = this.getFilePath();

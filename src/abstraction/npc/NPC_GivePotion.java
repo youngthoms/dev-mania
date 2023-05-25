@@ -8,9 +8,7 @@ import view.GamePanel;
 import java.io.File;
 import java.util.Random;
 
-import view.GamePanel;
-
-import static view.GamePanel.TILE_SIZE;
+import static view.GamePanel.*;
 
 
 public class NPC_GivePotion extends Entity {
@@ -20,8 +18,8 @@ public class NPC_GivePotion extends Entity {
 
     public NPC_GivePotion(GamePanel gp) {
         super(gp);
-        this.setScreenX(getGamePanel().SCREEN_WIDTH / 2 - (getGamePanel().TILE_SIZE / 2));
-        this.setScreenY(getGamePanel().SCREEN_HEIGHT / 2 - (getGamePanel().TILE_SIZE / 2));
+        this.setScreenX(SCREEN_WIDTH / 2 - (TILE_SIZE / 2));
+        this.setScreenY(SCREEN_HEIGHT / 2 - (TILE_SIZE / 2));
         setDirection("down");
         setSpeed(1);
         getOldmanImage();
@@ -39,14 +37,14 @@ public class NPC_GivePotion extends Entity {
     }
 
     public void getOldmanImage() {
-        setUp1(new Image(getURL("oldman_up_1.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
-        setUp2(new Image(getURL("oldman_up_2.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
-        setDown1(new Image(getURL("oldman_down_1.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
-        setDown2(new Image(getURL("oldman_down_2.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
-        setLeft1(new Image(getURL("oldman_left_1.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
-        setLeft2(new Image(getURL("oldman_left_2.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
-        setRight1(new Image(getURL("oldman_right_1.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
-        setRight2(new Image(getURL("oldman_right_2.png"), getGamePanel().TILE_SIZE, getGamePanel().TILE_SIZE, false, false));
+        setUp1(new Image(getURL("oldman_up_1.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setUp2(new Image(getURL("oldman_up_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setDown1(new Image(getURL("oldman_down_1.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setDown2(new Image(getURL("oldman_down_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setLeft1(new Image(getURL("oldman_left_1.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setLeft2(new Image(getURL("oldman_left_2.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setRight1(new Image(getURL("oldman_right_1.png"), TILE_SIZE, TILE_SIZE, false, false));
+        setRight2(new Image(getURL("oldman_right_2.png"), TILE_SIZE, TILE_SIZE, false, false));
     }
 
     public void setAction() {
@@ -121,7 +119,7 @@ public class NPC_GivePotion extends Entity {
 
     public void speak() {
         getGamePanel().getUi().setCurrentDialogue(getDialogues()[0]);
-        this.getGamePanel().getPlayer().setHasLifePotion(this.getGamePanel().getPlayer().getHasLifePotion()+1);
+        this.getGamePanel().getPlayer().setHasLifePotion(this.getGamePanel().getPlayer().getHasLifePotion() + 1);
     }
 
 

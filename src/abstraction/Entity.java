@@ -591,7 +591,6 @@ public class Entity {
     }
 
 
-
     /**
      * Définit l'image correspondant à la deuxième étape de mouvement vers la droite.
      *

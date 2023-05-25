@@ -121,7 +121,6 @@ public class GamePanel extends Canvas implements Runnable {
     }
 
 
-
     /**
      * Cette méthode représente la boucle de jeu exécutée par le thread.
      */

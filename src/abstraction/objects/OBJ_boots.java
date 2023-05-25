@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 import static view.GamePanel.TILE_SIZE;
 
-public class OBJ_boots extends SuperObject{
+public class OBJ_boots extends SuperObject {
 
     public OBJ_boots() {
         setName("Boots");

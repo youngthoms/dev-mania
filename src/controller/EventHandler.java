@@ -21,7 +21,7 @@ public class EventHandler {
     }
 
     public void damagePit() {
-        if (this.gp.getPlayer().getLife()>=1){
+        if (this.gp.getPlayer().getLife() >= 1) {
             this.gp.getPlayer().setLife(this.gp.getPlayer().getLife() - 1);
         }
     }

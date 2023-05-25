@@ -10,5 +10,6 @@ public class OBJ_Teleporteur extends SuperObject {
         setName("Teleporteur");
         setImage(new Image("res/bonus/teleporteur.png", TILE_SIZE, TILE_SIZE, false, false));
     }
+
 }
 

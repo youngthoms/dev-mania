@@ -385,7 +385,7 @@ public class Player extends Entity {
     public void draw(GraphicsContext gc) {
         Image image = null;
         int tempScreenX = this.getScreenX();
-        int tempScreenY= this.getScreenY();
+        int tempScreenY = this.getScreenY();
 
         switch (this.getDirection()) {
             case "up":

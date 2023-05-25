@@ -107,8 +107,7 @@ public class Collision {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
                     }
-                }
-                else {
+                } else {
                     if (tileNum1 == 6 || tileNum2 == 6) {
                         if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                             entity.setCollisionOn(true);
