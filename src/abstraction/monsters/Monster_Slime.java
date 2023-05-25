@@ -65,7 +65,7 @@ public abstract class Monster_Slime extends Entity implements Monster {
     public void handleCollision(boolean contactPlayer) {
         if (contactPlayer) {
             Player player = this.getGamePanel().getPlayer();
-            if (!player.hasInvincibility()) {
+            if (!player.getHasInvincibility()) {
                 if (!player.isInvincible()) {
                     player.setLife(player.getLife() - 1);
                     player.setInvincible(true);

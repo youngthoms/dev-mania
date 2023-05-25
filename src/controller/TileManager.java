@@ -14,6 +14,7 @@ import static view.GamePanel.*;
  * TileManager gère les tuiles de la carte.
  */
 public class TileManager {
+    private String filePath;
     private GamePanel gp; // Instance du GamePanel
     private Tile[] tile; // Tableau des tuiles
     private int mapTileNum[][]; // Tableau des numéros de tuiles de la carte
@@ -28,7 +29,16 @@ public class TileManager {
         this.tile = new Tile[10];
         this.mapTileNum = new int[MAX_WORLD_COLUMN][MAX_WORLD_ROW];
         this.getTileImage();
-        this.loadMap("res/map/world.csv");
+        this.setFilePath("res/map/world.csv");
+        this.loadMap();
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     /**
@@ -83,9 +93,9 @@ public class TileManager {
     /**
      * Charge la carte à partir d'un fichier CSV.
      *
-     * @param filePath Chemin du fichier CSV.
      */
-    public void loadMap(String filePath) {
+    public void loadMap() {
+        String filePath = this.getFilePath();
         try {
             InputStream is = TileManager.class.getClassLoader().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));

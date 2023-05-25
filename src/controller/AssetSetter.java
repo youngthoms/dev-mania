@@ -51,8 +51,12 @@ public class AssetSetter {
         gp.object[7].setWorldY(10 * TILE_SIZE);
 
         gp.object[8] = new OBJ_invincible();
-        gp.object[8].setWorldX(38 * TILE_SIZE);
-        gp.object[8].setWorldY(10 * TILE_SIZE);
+        gp.object[8].setWorldX(39 * TILE_SIZE);
+        gp.object[8].setWorldY(12 * TILE_SIZE);
+
+        gp.object[9] = new OBJ_newMap();
+        gp.object[9].setWorldX(39 * TILE_SIZE);
+        gp.object[9].setWorldY(11 * TILE_SIZE);
     }
 
     public void setNPC() {

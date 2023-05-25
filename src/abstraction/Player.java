@@ -196,7 +196,7 @@ public class Player extends Entity {
      */
     public void contactMonster(int index) {
         if (index != 999) {
-            if (!this.hasInvincibility) {
+            if (!this.getHasInvincibility()) {
                 if (!this.isInvincible()) {
                     this.setLife(this.getLife() - 1);
                     this.setInvincible(true);
@@ -287,6 +287,10 @@ public class Player extends Entity {
                     this.setHasInvincibility(true);
                     getGamePanel().object[index] = null;
                     break;
+                case "New map":
+                    this.getGamePanel().getTileManager().setFilePath("res/map/map.csv");
+                    this.getGamePanel().getTileManager().loadMap();
+                    break;
             }
         }
     }
@@ -356,12 +360,12 @@ public class Player extends Entity {
         this.hasLifePotion = hasLifePotion;
     }
 
-    public boolean hasInvincibility() {
+    public boolean getHasInvincibility() {
         return hasInvincibility;
     }
 
-    public void setHasInvincibility(boolean hasInvincibility) {
-        this.hasInvincibility = hasInvincibility;
+    public void setHasInvincibility(boolean invincibility) {
+        this.hasInvincibility = invincibility;
     }
 
     /**

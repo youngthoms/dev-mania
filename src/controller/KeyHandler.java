@@ -84,6 +84,11 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                 switch (event.getCode()) {
                     case P:
                         gp.setGameState(gp.getPlayState());
+                        up = false;
+                        down = false;
+                        right = false;
+                        left = false;
+                        break;
                 }
             }
         }
@@ -93,6 +98,11 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                 switch (event.getCode()) {
                     case Q:
                         gp.setGameState(gp.getPlayState());
+                        up = false;
+                        down = false;
+                        right = false;
+                        left = false;
+                        break;
                 }
             }
         }

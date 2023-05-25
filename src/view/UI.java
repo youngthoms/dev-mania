@@ -131,7 +131,7 @@ public class UI {
             gc.strokeText("-1", gp.getPlayer().getScreenX(), gp.getPlayer().getScreenY());
         }
 
-        if (gp.getPlayer().hasInvincibility()) {
+        if (gp.getPlayer().getHasInvincibility()) {
             gc.strokeText("Invincible !", SCREEN_WIDTH - TILE_SIZE * 5, 65);
         }
 
