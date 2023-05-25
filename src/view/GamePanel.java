@@ -3,7 +3,7 @@ package view;
 import abstraction.*;
 import abstraction.objects.OBJ_door;
 import abstraction.objects.SuperObject;
-import abstraction.tiles.TileManager;
+import controller.TileManager;
 import controller.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

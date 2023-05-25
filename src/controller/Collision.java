@@ -1,7 +1,6 @@
 package controller;
 
 import abstraction.Entity;
-import abstraction.tiles.TileManager;
 import view.GamePanel;
 
 import static view.GamePanel.TILE_SIZE;

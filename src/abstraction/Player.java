@@ -18,6 +18,7 @@ public class Player extends Entity {
     public static final String RES_URL = "res" + File.separator + "player";
     KeyHandler keyH;
     private int hasLifePotion = 0;
+    private boolean hasInvincibility = false;
 
     /**
      * Constructeur de la classe Player.
@@ -195,9 +196,11 @@ public class Player extends Entity {
      */
     public void contactMonster(int index) {
         if (index != 999) {
-            if (!this.isInvincible()) {
-                this.setLife(this.getLife() - 1);
-                this.setInvincible(true);
+            if (!this.hasInvincibility) {
+                if (!this.isInvincible()) {
+                    this.setLife(this.getLife() - 1);
+                    this.setInvincible(true);
+                }
             }
         }
     }
@@ -279,6 +282,11 @@ public class Player extends Entity {
                 case "NoColide":
                     setNoColideBonus(true);
                     getGamePanel().object[index] = null;
+                    break;
+                case "Invincible":
+                    this.setHasInvincibility(true);
+                    getGamePanel().object[index] = null;
+                    break;
             }
         }
     }
@@ -346,6 +354,14 @@ public class Player extends Entity {
      */
     public void setHasLifePotion(int hasLifePotion) {
         this.hasLifePotion = hasLifePotion;
+    }
+
+    public boolean hasInvincibility() {
+        return hasInvincibility;
+    }
+
+    public void setHasInvincibility(boolean hasInvincibility) {
+        this.hasInvincibility = hasInvincibility;
     }
 
     /**
@@ -440,9 +456,6 @@ public class Player extends Entity {
                 break;
         }
 
-        if (this.isInvincible()) {
-            gc.strokeText("-1", this.getScreenX(), this.getScreenY());
-        }
         gc.drawImage(image, tempScreenX, tempScreenY, image.getRequestedWidth(), image.getRequestedHeight());
     }
 

@@ -1,5 +1,6 @@
-package abstraction;
+package abstraction.npc;
 
+import abstraction.Entity;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 import view.GamePanel;

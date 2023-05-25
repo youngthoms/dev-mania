@@ -1,8 +1,9 @@
 package controller;
 
-import abstraction.*;
 import abstraction.monsters.Monster_greenSlime;
 import abstraction.monsters.Monster_redSlime;
+import abstraction.npc.NPC_GivePotion;
+import abstraction.npc.NPC_OldMan;
 import abstraction.objects.*;
 import view.GamePanel;
 
@@ -48,6 +49,10 @@ public class AssetSetter {
         gp.object[7] = new OBJ_noColide();
         gp.object[7].setWorldX(37 * TILE_SIZE);
         gp.object[7].setWorldY(10 * TILE_SIZE);
+
+        gp.object[8] = new OBJ_invincible();
+        gp.object[8].setWorldX(38 * TILE_SIZE);
+        gp.object[8].setWorldY(10 * TILE_SIZE);
     }
 
     public void setNPC() {
@@ -73,5 +78,4 @@ public class AssetSetter {
         gp.getMonster()[2].setWorldX(TILE_SIZE * 23);
         gp.getMonster()[2].setWorldY(TILE_SIZE * 38);
     }
-
 }

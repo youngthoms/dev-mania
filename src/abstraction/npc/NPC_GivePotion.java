@@ -1,5 +1,6 @@
-package abstraction;
+package abstraction.npc;
 
+import abstraction.Entity;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 import view.GamePanel;
@@ -12,7 +13,7 @@ import view.GamePanel;
 import static view.GamePanel.TILE_SIZE;
 
 
-public class NPC_GivePotion extends Entity{
+public class NPC_GivePotion extends Entity {
 
     public static final String RES_URL = "res" + File.separator + "npc";
     private int actionLockCounter = 0;

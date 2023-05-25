@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import static view.GamePanel.SCREEN_WIDTH;
 import static view.GamePanel.TILE_SIZE;
 
 /**
@@ -125,6 +126,14 @@ public class UI {
     public void draw(GraphicsContext gc) {
         drawPlayerInventory(gc);
         drawPlayerLife(gc);
+
+        if (gp.getPlayer().isInvincible()) {
+            gc.strokeText("-1", gp.getPlayer().getScreenX(), gp.getPlayer().getScreenY());
+        }
+
+        if (gp.getPlayer().hasInvincibility()) {
+            gc.strokeText("Invincible !", SCREEN_WIDTH - TILE_SIZE * 5, 65);
+        }
 
         if (gp.getGameState() == gp.getPlayState()) {
             // ...
