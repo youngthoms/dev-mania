@@ -15,6 +15,7 @@ public class Entity {
     // Attributs de l'entité
     private int worldX, worldY, speed, life, maxLife, strength;
     private boolean oneShot = false;
+    private boolean hasY;
     private String name = "any";
     private GamePanel gp;
     private int spriteCounter = 0;
@@ -903,5 +904,13 @@ public class Entity {
 
     public boolean isOneShot() {
         return oneShot;
+    }
+
+    public boolean hasY() {
+        return hasY;
+    }
+
+    public void setHasY(boolean hasY) {
+        this.hasY = hasY;
     }
 }

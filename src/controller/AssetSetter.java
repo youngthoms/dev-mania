@@ -35,21 +35,21 @@ public class AssetSetter {
         gp.object[3].setWorldX(23 * gp.TILE_SIZE);
         gp.object[3].setWorldY(12 * gp.TILE_SIZE);
 
-        gp.object[4] = new OBJ_Teleporteur();
-        gp.object[4].setWorldX(23 * gp.TILE_SIZE);
-        gp.object[4].setWorldY(18 * gp.TILE_SIZE);
+//        gp.object[4] = new OBJ_Teleporteur();
+//        gp.object[4].setWorldX(23 * gp.TILE_SIZE);
+//        gp.object[4].setWorldY(18 * gp.TILE_SIZE);
 
         gp.object[5] = new OBJ_heart();
-        gp.object[5].setWorldX(23 * gp.TILE_SIZE);
-        gp.object[5].setWorldY(19 * gp.TILE_SIZE);
+        gp.object[5].setWorldX(24 * gp.TILE_SIZE);
+        gp.object[5].setWorldY(10 * gp.TILE_SIZE);
 
         gp.object[6] = new OBJ_key();
         gp.object[6].setWorldX(35 * TILE_SIZE);
         gp.object[6].setWorldY(10 * TILE_SIZE);
 
         gp.object[7] = new OBJ_noColide();
-        gp.object[7].setWorldX(37 * TILE_SIZE);
-        gp.object[7].setWorldY(10 * TILE_SIZE);
+        gp.object[7].setWorldX(23 * TILE_SIZE);
+        gp.object[7].setWorldY(16 * TILE_SIZE);
 
         gp.object[8] = new OBJ_invincible();
         gp.object[8].setWorldX(39 * TILE_SIZE);

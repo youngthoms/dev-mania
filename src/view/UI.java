@@ -16,7 +16,7 @@ import static view.GamePanel.TILE_SIZE;
 public class UI {
     private GamePanel gp;
     private Font currentFont;
-    private Image keyImage, heart_full, heart_half, heart_blank, lifePotion, zImage;
+    private Image keyImage, heart_full, heart_half, heart_blank, lifePotion, zImage, yImage;
     private boolean messageOn = false;
     private String message = "";
     private String currentDialogue = "";
@@ -43,6 +43,9 @@ public class UI {
 
         SuperObject z = new OBJ_X();
         this.zImage = z.getImage();
+
+        SuperObject y = new OBJ_noColide();
+        this.yImage = y.getImage();
     }
 
     /**
@@ -177,6 +180,15 @@ public class UI {
 
         gc.drawImage(zImage, TILE_SIZE / 2, 3.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
         gc.strokeText("x " + this.gp.getPlayer().getHasZ(), 74, 160 + TILE_SIZE);
+
+        gc.drawImage(yImage, TILE_SIZE / 2, 4.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        String status;
+        if (this.gp.getPlayer().hasY()) {
+             status = "Oui";
+        } else {
+            status = "Non";
+        }
+        gc.strokeText(status, 74, 210 + TILE_SIZE);
     }
 
     /**

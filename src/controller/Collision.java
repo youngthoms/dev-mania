@@ -35,14 +35,18 @@ public class Collision {
                 if (entity.isNoColideBonus() == false) {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            gp.getPlayer().setLife(0);
+                        }
                     }
                 } else {
-                    if (tileNum1 == 6 || tileNum2 == 6) {
-                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            entity.setCollisionOn(false);
+                        } else {
                             entity.setCollisionOn(true);
                         }
                     }
-
                 }
                 if (tileNum1 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityLeftCol][entityTopRow] = 0;
@@ -59,10 +63,15 @@ public class Collision {
                 if (entity.isNoColideBonus() == false) {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            gp.getPlayer().setLife(0);
+                        }
                     }
                 } else {
-                    if (tileNum1 == 6 || tileNum2 == 6) {
-                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            entity.setCollisionOn(false);
+                        } else {
                             entity.setCollisionOn(true);
                         }
                     }
@@ -82,14 +91,18 @@ public class Collision {
                 if (entity.isNoColideBonus() == false) {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            gp.getPlayer().setLife(0);
+                        }
                     }
                 } else {
-                    if (tileNum1 == 6 || tileNum2 == 6) {
-                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            entity.setCollisionOn(false);
+                        } else {
                             entity.setCollisionOn(true);
                         }
                     }
-
                 }
                 if (tileNum1 == 4 && entity.isAttacking()) {
                     tm.getMapTileNum()[entityLeftCol][entityTopRow] = 0;
@@ -106,10 +119,15 @@ public class Collision {
                 if (entity.isNoColideBonus() == false) {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            gp.getPlayer().setLife(0);
+                        }
                     }
                 } else {
-                    if (tileNum1 == 6 || tileNum2 == 6) {
-                        if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                    if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
+                        if (tileNum1 == 7 || tileNum2 == 7) {
+                            entity.setCollisionOn(false);
+                        } else {
                             entity.setCollisionOn(true);
                         }
                     }

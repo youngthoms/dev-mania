@@ -20,4 +20,16 @@ Pour tester cette fonctionnalité, rendez-vous en bas de la map où vous pourrez
 Pour l'utiliser, appuyer sur "x". Le monstre B pourra être tué en un coup.
 
 # Question 2
+	modified:   src/abstraction/Entity.java
+	modified:   src/abstraction/Player.java
+	modified:   src/abstraction/objects/OBJ_noColide.java
+	modified:   src/controller/AssetSetter.java
+	modified:   src/controller/Collision.java
+	modified:   src/controller/TileManager.java
+	new file:   src/res/bonus/y.png
+	new file:   src/res/map/e.png
+	modified:   src/res/map/world.csv
+	modified:   src/view/UI.java
 
+Il existe déjà un item Y qui dans src.abstraction.objects. J'ai modifié son image et son comportement dans Collision.java
+Pour tester, l'élément E se trouve proche du point d'apparation, de même pour l'item X

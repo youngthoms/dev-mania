@@ -292,6 +292,7 @@ public class Player extends Entity {
                     break;
                 case "NoColide":
                     setNoColideBonus(true);
+                    this.setHasY(true);
                     getGamePanel().object[index] = null;
                     break;
                 case "Invincible":

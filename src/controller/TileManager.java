@@ -70,6 +70,10 @@ public class TileManager {
         tile[6] = new Tile();
         tile[6].setImage(new Image("res/map/tree.png", TILE_SIZE, TILE_SIZE, false, false));
         tile[6].setAsObstacle();
+
+        tile[7] = new Tile();
+        tile[7].setImage(new Image("res/map/e.png", TILE_SIZE, TILE_SIZE, false, false));
+        tile[7].setAsObstacle();
     }
 
     /**
