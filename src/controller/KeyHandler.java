@@ -1,8 +1,12 @@
 package controller;
 
+import abstraction.Entity;
+import abstraction.monsters.Monster_Slime;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import view.GamePanel;
+
+import java.util.Objects;
 
 /**
  * Gère les événements clavier pour le jeu.
@@ -55,6 +59,21 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                         if (gp.getPlayer().getHasLifePotion() > 0) {
                             gp.getPlayer().setLife(gp.getPlayer().getMaxLife());
                             gp.getPlayer().setHasLifePotion(gp.getPlayer().getHasLifePotion() - 1);
+                        }
+                        break;
+                    case X:
+                        if (gp.getPlayer().getHasZ() > 0) {
+                            gp.getPlayer().setHasZ(gp.getPlayer().getHasZ() - 1);
+                            for (Entity monster : gp.getMonster()) {
+                                if (monster != null) {
+                                    if (Objects.equals(monster.getName(), "B")) {
+                                        monster.setOneShot(true);
+                                    }
+                                }
+                            }
+                        }
+                        if (gp.bIsBeaten) {
+                            gp.gameThread = null;
                         }
                         break;
                 }

@@ -29,6 +29,7 @@ public class GamePanel extends Canvas implements Runnable {
 
     // FPS
     public static final int FPS = 45;
+    public boolean bIsBeaten = false;
 
     // ÉTAT DU JEU
 
@@ -39,13 +40,13 @@ public class GamePanel extends Canvas implements Runnable {
 
     TileManager tileManager = new TileManager(this);
     private Collision collisionChecker;
-    private Thread gameThread;
+    public Thread gameThread;
     private KeyHandler keyH;
     private Player player;
     private UI ui;
 
     private ObjectColisionChecker colisionObject;
-    public SuperObject object[] = new SuperObject[10];
+    public SuperObject object[] = new SuperObject[20];
     private Entity npc[] = new Entity[10];
     private Entity monster[] = new Entity[20];
     public AssetSetter assetSetter = new AssetSetter(this);
@@ -160,7 +161,7 @@ public class GamePanel extends Canvas implements Runnable {
                 this.getUi().setCurrentDialogue("You loose");
                 getUi().drawDialogueScreen();
                 break;
-            } else if (winChest() || winMonster()) {
+            } else if (winChest() || winMonster() || bIsBeaten) {
                 this.getUi().setCurrentDialogue("Win");
                 getUi().drawDialogueScreen();
                 break;

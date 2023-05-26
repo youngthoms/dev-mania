@@ -10,7 +10,6 @@ import java.util.Random;
 import static view.GamePanel.FPS;
 
 public abstract class Monster_Slime extends Entity implements Monster {
-    private String name;
     private int actionLockCounter = 0;
 
     /**

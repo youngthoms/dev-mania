@@ -15,9 +15,10 @@ import static view.GamePanel.*;
  */
 public class Player extends Entity {
     private int hasKey = 0;
+    private int hasLifePotion = 0;
+    private int hasZ = 0;
     public static final String RES_URL = "res" + File.separator + "player";
     KeyHandler keyH;
-    private int hasLifePotion = 0;
     private boolean hasInvincibility = false;
 
     /**
@@ -213,11 +214,21 @@ public class Player extends Entity {
     public void damageMonster(int index) {
         if (index != 999) {
             Entity monster = this.getGamePanel().getMonster()[index];
+            if (monster.isOneShot()) {
+                monster.setLife(0);
+            }
+
             if (!monster.isInvincible()) {
                 monster.setLife(monster.getLife() - 1);
                 monster.setInvincible(true);
 
                 if (monster.getLife() <= 0) {
+                    if (monster.getName().contentEquals("B")) {
+                        getGamePanel().getUi().setCurrentDialogue("Congrats !\n B is dead");
+                        getGamePanel().setGameState(getGamePanel().getDialogueState());
+                        getGamePanel().bIsBeaten = true;
+                    }
+
                     this.getGamePanel().getMonster()[index] = null;
                 }
             }
@@ -272,8 +283,8 @@ public class Player extends Entity {
                     }
                     break;
                 case "Teleporteur":
-                    this.setWorldX(33 * getGamePanel().TILE_SIZE);
-                    this.setWorldY(7 * getGamePanel().TILE_SIZE);
+                    this.setWorldX(33 * TILE_SIZE);
+                    this.setWorldY(7 * TILE_SIZE);
                     break;
                 case "LifePotion":
                     setHasLifePotion(getHasLifePotion() + 1);
@@ -290,6 +301,10 @@ public class Player extends Entity {
                 case "New map":
                     this.getGamePanel().getTileManager().setFilePath("res/map/map.csv");
                     this.getGamePanel().getTileManager().loadMap();
+                    break;
+                case "Z":
+                    this.setHasZ(this.getHasZ() + 1);
+                    getGamePanel().object[index] = null;
                     break;
             }
         }
@@ -470,4 +485,11 @@ public class Player extends Entity {
         }
     }
 
+    public void setHasZ(int hasZ) {
+        this.hasZ = hasZ;
+    }
+
+    public int getHasZ() {
+        return hasZ;
+    }
 }

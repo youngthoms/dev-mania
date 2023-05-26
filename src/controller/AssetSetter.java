@@ -1,5 +1,6 @@
 package controller;
 
+import abstraction.monsters.Monster_b;
 import abstraction.monsters.Monster_greenSlime;
 import abstraction.monsters.Monster_redSlime;
 import abstraction.npc.NPC_GivePotion;
@@ -57,6 +58,10 @@ public class AssetSetter {
         gp.object[9] = new OBJ_newMap();
         gp.object[9].setWorldX(39 * TILE_SIZE);
         gp.object[9].setWorldY(11 * TILE_SIZE);
+
+        gp.object[10] = new OBJ_X();
+        gp.object[10].setWorldX(23 * TILE_SIZE);
+        gp.object[10].setWorldY(34 * TILE_SIZE);
     }
 
     public void setNPC() {
@@ -81,5 +86,9 @@ public class AssetSetter {
         gp.getMonster()[2] = new Monster_redSlime(gp);
         gp.getMonster()[2].setWorldX(TILE_SIZE * 23);
         gp.getMonster()[2].setWorldY(TILE_SIZE * 38);
+
+        gp.getMonster()[3] = new Monster_b(gp);
+        gp.getMonster()[3].setWorldX(TILE_SIZE * 23);
+        gp.getMonster()[3].setWorldY(TILE_SIZE * 39);
     }
 }

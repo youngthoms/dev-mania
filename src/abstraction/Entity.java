@@ -14,6 +14,8 @@ import static view.GamePanel.TILE_SIZE;
 public class Entity {
     // Attributs de l'entité
     private int worldX, worldY, speed, life, maxLife, strength;
+    private boolean oneShot = false;
+    private String name = "any";
     private GamePanel gp;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
@@ -885,5 +887,21 @@ public class Entity {
 
     public void setNoColideBonus(boolean noColideBonus) {
         this.noColideBonus = noColideBonus;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setOneShot(boolean oneShot) {
+        this.oneShot = oneShot;
+    }
+
+    public boolean isOneShot() {
+        return oneShot;
     }
 }

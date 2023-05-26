@@ -1,0 +1,23 @@
+# Question 1
+## A
+Le monstre B est défini par la classe Monster_b dans src.abstraction.monsters
+L'item X est défini dans src.abtraction.ojects
+
+	modified:   src/abstraction/Entity.java
+	modified:   src/abstraction/Player.java
+	modified:   src/abstraction/monsters/Monster_Slime.java
+	new file:   src/abstraction/monsters/Monster_b.java
+	new file:   src/abstraction/objects/OBJ_X.java
+	modified:   src/controller/AssetSetter.java
+	modified:   src/controller/KeyHandler.java
+	new file:   src/res/bonus/x.png
+	new file:   src/res/monster/b.png
+	modified:   src/view/DevMania.java
+	modified:   src/view/GamePanel.java
+	modified:   src/view/UI.java
+
+Pour tester cette fonctionnalité, rendez-vous en bas de la map où vous pourrez trouver l'item X.
+Pour l'utiliser, appuyer sur "x". Le monstre B pourra être tué en un coup.
+
+# Question 2
+

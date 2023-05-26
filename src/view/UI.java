@@ -1,9 +1,6 @@
 package view;
 
-import abstraction.objects.OBJ_heart;
-import abstraction.objects.OBJ_key;
-import abstraction.objects.OBJ_lifePotion;
-import abstraction.objects.SuperObject;
+import abstraction.objects.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -19,7 +16,7 @@ import static view.GamePanel.TILE_SIZE;
 public class UI {
     private GamePanel gp;
     private Font currentFont;
-    private Image keyImage, heart_full, heart_half, heart_blank, lifePotion;
+    private Image keyImage, heart_full, heart_half, heart_blank, lifePotion, zImage;
     private boolean messageOn = false;
     private String message = "";
     private String currentDialogue = "";
@@ -40,8 +37,12 @@ public class UI {
         heart_full = heart.getImage();
         heart_half = heart.getImage1();
         heart_blank = heart.getImage2();
+
         SuperObject lifePotion = new OBJ_lifePotion();
         this.lifePotion = lifePotion.getImage();
+
+        SuperObject z = new OBJ_X();
+        this.zImage = z.getImage();
     }
 
     /**
@@ -167,10 +168,15 @@ public class UI {
     public void drawPlayerInventory(GraphicsContext gc) {
         gc.setFont(this.currentFont);
         gc.setStroke(Color.WHITE);
+
         gc.drawImage(keyImage, TILE_SIZE / 2, TILE_SIZE + (TILE_SIZE / 2), TILE_SIZE, TILE_SIZE);
         gc.strokeText("x " + this.gp.getPlayer().getHasKey(), 74, 65 + TILE_SIZE);
+
         gc.drawImage(lifePotion, TILE_SIZE / 2, 2.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
         gc.strokeText("x " + this.gp.getPlayer().getHasLifePotion(), 74, 110 + TILE_SIZE);
+
+        gc.drawImage(zImage, TILE_SIZE / 2, 3.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        gc.strokeText("x " + this.gp.getPlayer().getHasZ(), 74, 160 + TILE_SIZE);
     }
 
     /**
