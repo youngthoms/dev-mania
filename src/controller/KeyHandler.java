@@ -62,8 +62,8 @@ public class KeyHandler implements EventHandler<KeyEvent> {
                         }
                         break;
                     case X:
-                        if (gp.getPlayer().getHasZ() > 0) {
-                            gp.getPlayer().setHasZ(gp.getPlayer().getHasZ() - 1);
+                        if (gp.getPlayer().getHasX() > 0) {
+                            gp.getPlayer().setHasX(gp.getPlayer().getHasX() - 1);
                             for (Entity monster : gp.getMonster()) {
                                 if (monster != null) {
                                     if (Objects.equals(monster.getName(), "B")) {

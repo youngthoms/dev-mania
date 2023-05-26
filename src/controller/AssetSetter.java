@@ -1,7 +1,9 @@
 package controller;
 
+import abstraction.Entity;
 import abstraction.monsters.Monster_b;
 import abstraction.monsters.Monster_greenSlime;
+import abstraction.monsters.Monster_m;
 import abstraction.monsters.Monster_redSlime;
 import abstraction.npc.NPC_GivePotion;
 import abstraction.npc.NPC_OldMan;
@@ -87,8 +89,32 @@ public class AssetSetter {
         gp.getMonster()[2].setWorldX(TILE_SIZE * 23);
         gp.getMonster()[2].setWorldY(TILE_SIZE * 38);
 
-        gp.getMonster()[3] = new Monster_b(gp);
-        gp.getMonster()[3].setWorldX(TILE_SIZE * 23);
-        gp.getMonster()[3].setWorldY(TILE_SIZE * 39);
+        gp.getMonster()[4] = new Monster_b(gp);
+        gp.getMonster()[4].setWorldX(TILE_SIZE * 26);
+        gp.getMonster()[4].setWorldY(TILE_SIZE * 22);
+
+        gp.getMonster()[5] = new Monster_m(gp);
+        gp.getMonster()[5].setWorldX(TILE_SIZE * 20);
+        gp.getMonster()[5].setWorldY(TILE_SIZE * 22);
+
+        gp.getMonster()[6] = new Monster_m(gp);
+        gp.getMonster()[6].setWorldX(TILE_SIZE * 19);
+        gp.getMonster()[6].setWorldY(TILE_SIZE * 22);
+
+
+        gp.getMonster()[7] = new Monster_m(gp);
+        gp.getMonster()[7].setWorldX(TILE_SIZE * 18);
+        gp.getMonster()[7].setWorldY(TILE_SIZE * 22);
+    }
+
+    public void setDrop(int worldX, int worldY) {
+        for (int i = 0; i < gp.object.length; i++) {
+            if (gp.object[i] == null) {
+                gp.object[i] = new OBJ_Z();
+                gp.object[i].setWorldX(worldX);
+                gp.object[i].setWorldY(worldY);
+                break;
+            }
+        }
     }
 }

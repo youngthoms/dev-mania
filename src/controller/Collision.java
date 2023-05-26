@@ -36,7 +36,9 @@ public class Collision {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
                         if (tileNum1 == 7 || tileNum2 == 7) {
-                            gp.getPlayer().setLife(0);
+                            if (entity.getName().contentEquals("Player")) {
+                                gp.getPlayer().setLife(0);
+                            }
                         }
                     }
                 } else {
@@ -64,7 +66,9 @@ public class Collision {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
                         if (tileNum1 == 7 || tileNum2 == 7) {
-                            gp.getPlayer().setLife(0);
+                            if (entity.getName().contentEquals("Player")) {
+                                gp.getPlayer().setLife(0);
+                            }
                         }
                     }
                 } else {
@@ -92,7 +96,9 @@ public class Collision {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
                         if (tileNum1 == 7 || tileNum2 == 7) {
-                            gp.getPlayer().setLife(0);
+                            if (entity.getName().contentEquals("Player")) {
+                                gp.getPlayer().setLife(0);
+                            }
                         }
                     }
                 } else {
@@ -120,7 +126,9 @@ public class Collision {
                     if (tm.getTile()[tileNum1].getCollision() || tm.getTile()[tileNum2].getCollision()) {
                         entity.setCollisionOn(true);
                         if (tileNum1 == 7 || tileNum2 == 7) {
-                            gp.getPlayer().setLife(0);
+                            if (entity.getName().contentEquals("Player")) {
+                                gp.getPlayer().setLife(0);
+                            }
                         }
                     }
                 } else {

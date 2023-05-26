@@ -15,6 +15,8 @@ public class Entity {
     // Attributs de l'entité
     private int worldX, worldY, speed, life, maxLife, strength;
     private boolean oneShot = false;
+    private boolean drop = false;
+
     private boolean hasY;
     private String name = "any";
     private GamePanel gp;
@@ -912,5 +914,17 @@ public class Entity {
 
     public void setHasY(boolean hasY) {
         this.hasY = hasY;
+    }
+
+    public void setDrop(boolean drop) {
+        this.drop = drop;
+    }
+
+    public boolean isDrop() {
+        return drop;
+    }
+
+    public boolean inventoryEmpty() {
+        return false;
     }
 }

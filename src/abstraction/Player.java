@@ -16,6 +16,7 @@ import static view.GamePanel.*;
 public class Player extends Entity {
     private int hasKey = 0;
     private int hasLifePotion = 0;
+    private int hasX = 0;
     private int hasZ = 0;
     public static final String RES_URL = "res" + File.separator + "player";
     KeyHandler keyH;
@@ -44,6 +45,8 @@ public class Player extends Entity {
         // Player status
         this.setMaxLife(6); // 6 Life = 3 hearts
         this.setLife(this.getMaxLife());
+
+        this.setName("Player");
 
         this.setDefaultValues(TILE_SIZE * 23, TILE_SIZE * 20, 5, "down");
     }
@@ -229,6 +232,14 @@ public class Player extends Entity {
                         getGamePanel().bIsBeaten = true;
                     }
 
+                    if (monster.getName().contentEquals("M")) {
+                        if (getGamePanel().isLastMonster(monster.getName())) {
+                            monster.setDrop(true);
+                        }
+                    }
+                    if (monster.isDrop()) {
+                        getGamePanel().assetSetter.setDrop(monster.getWorldX(), monster.getWorldY());
+                    }
                     this.getGamePanel().getMonster()[index] = null;
                 }
             }
@@ -302,6 +313,10 @@ public class Player extends Entity {
                 case "New map":
                     this.getGamePanel().getTileManager().setFilePath("res/map/map.csv");
                     this.getGamePanel().getTileManager().loadMap();
+                    break;
+                case "X":
+                    this.setHasX(this.getHasX() + 1);
+                    getGamePanel().object[index] = null;
                     break;
                 case "Z":
                     this.setHasZ(this.getHasZ() + 1);
@@ -486,11 +501,19 @@ public class Player extends Entity {
         }
     }
 
-    public void setHasZ(int hasZ) {
-        this.hasZ = hasZ;
+    public void setHasX(int hasX) {
+        this.hasX = hasX;
+    }
+
+    public int getHasX() {
+        return hasX;
     }
 
     public int getHasZ() {
         return hasZ;
+    }
+
+    public void setHasZ(int hasZ) {
+        this.hasZ = hasZ;
     }
 }

@@ -16,7 +16,7 @@ import static view.GamePanel.TILE_SIZE;
 public class UI {
     private GamePanel gp;
     private Font currentFont;
-    private Image keyImage, heart_full, heart_half, heart_blank, lifePotion, zImage, yImage;
+    private Image keyImage, heart_full, heart_half, heart_blank, lifePotion, xImage, yImage;
     private boolean messageOn = false;
     private String message = "";
     private String currentDialogue = "";
@@ -41,8 +41,8 @@ public class UI {
         SuperObject lifePotion = new OBJ_lifePotion();
         this.lifePotion = lifePotion.getImage();
 
-        SuperObject z = new OBJ_X();
-        this.zImage = z.getImage();
+        SuperObject x = new OBJ_X();
+        this.xImage = x.getImage();
 
         SuperObject y = new OBJ_noColide();
         this.yImage = y.getImage();
@@ -178,8 +178,8 @@ public class UI {
         gc.drawImage(lifePotion, TILE_SIZE / 2, 2.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
         gc.strokeText("x " + this.gp.getPlayer().getHasLifePotion(), 74, 110 + TILE_SIZE);
 
-        gc.drawImage(zImage, TILE_SIZE / 2, 3.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-        gc.strokeText("x " + this.gp.getPlayer().getHasZ(), 74, 160 + TILE_SIZE);
+        gc.drawImage(xImage, TILE_SIZE / 2, 3.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        gc.strokeText("x " + this.gp.getPlayer().getHasX(), 74, 160 + TILE_SIZE);
 
         gc.drawImage(yImage, TILE_SIZE / 2, 4.5 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
         String status;
@@ -189,6 +189,8 @@ public class UI {
             status = "Non";
         }
         gc.strokeText(status, 74, 210 + TILE_SIZE);
+
+        gc.strokeText("Z x " + this.gp.getPlayer().getHasZ(), 74 - TILE_SIZE, 260 + TILE_SIZE);
     }
 
     /**

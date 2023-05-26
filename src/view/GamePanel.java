@@ -366,4 +366,15 @@ public class GamePanel extends Canvas implements Runnable {
         this.ui = ui;
     }
 
+    public boolean isLastMonster(String name) {
+        int count = 0;
+        for (Entity m : this.getMonster()) {
+            if (m != null) {
+                if (m.getName().contentEquals(name)) {
+                    count++;
+                }
+            }
+        }
+        return count == 1;
+    }
 }

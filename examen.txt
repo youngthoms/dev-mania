@@ -19,6 +19,8 @@ L'item X est défini dans src.abtraction.ojects
 Pour tester cette fonctionnalité, rendez-vous en bas de la map où vous pourrez trouver l'item X.
 Pour l'utiliser, appuyer sur "x". Le monstre B pourra être tué en un coup.
 
+Je n'ai pas réussi à afficher une boîte de dialogue, du moins elle s'affiche mais beaucoup trop rapidement et la boîte de dialogue de WIN superpose les félicitations.
+
 # Question 2
 	modified:   src/abstraction/Entity.java
 	modified:   src/abstraction/Player.java
@@ -31,5 +33,33 @@ Pour l'utiliser, appuyer sur "x". Le monstre B pourra être tué en un coup.
 	modified:   src/res/map/world.csv
 	modified:   src/view/UI.java
 
-Il existe déjà un item Y qui dans src.abstraction.objects. J'ai modifié son image et son comportement dans Collision.java
-Pour tester, l'élément E se trouve proche du point d'apparation, de même pour l'item X
+Il existe déjà un item Y qui dans src.abstraction.objects.OBJ_noCollide. J'ai modifié son image et son comportement dans Collision.java
+Pour tester, l'élément E se trouve proche du point d'apparation, de même pour l'item Y
+
+# Question 3
+
+	modified:   src/abstraction/Player.java
+	modified:   src/controller/AssetSetter.java
+	modified:   src/controller/Collision.java
+	modified:   src/res/map/world.csv
+
+J'ai du modifier la classe Collision car j'ai rencontré un bug sur la question 2. Lorsqu'un monstre touchait l'élément E
+
+# Question 4
+	modified:   src/abstraction/Entity.java
+	modified:   src/abstraction/Player.java
+	new file:   src/abstraction/monsters/Monster_m.java
+	modified:   src/abstraction/objects/OBJ_X.java
+	new file:   src/abstraction/objects/OBJ_Z.java
+	modified:   src/controller/AssetSetter.java
+	modified:   src/controller/Collision.java
+	modified:   src/controller/KeyHandler.java
+	modified:   src/res/map/world.csv
+	new file:   src/res/monster/m.png
+	modified:   src/view/GamePanel.java
+	modified:   src/view/UI.java
+
+L'image de l'objet Z est un X est lorsque vous tuez le monstre M mais c'est bien un objet Z.
+
+# Question 5
+
