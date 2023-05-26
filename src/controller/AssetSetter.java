@@ -7,6 +7,7 @@ import abstraction.monsters.Monster_m;
 import abstraction.monsters.Monster_redSlime;
 import abstraction.npc.NPC_GivePotion;
 import abstraction.npc.NPC_OldMan;
+import abstraction.npc.NPC_thief;
 import abstraction.objects.*;
 import view.GamePanel;
 
@@ -67,13 +68,16 @@ public class AssetSetter {
     }
 
     public void setNPC() {
-        gp.getNpc()[0] = new NPC_OldMan(this.gp);
+        /*gp.getNpc()[0] = new NPC_OldMan(this.gp);
         gp.getNpc()[0].setWorldX(21 * TILE_SIZE);
         gp.getNpc()[0].setWorldY(21 * TILE_SIZE);
 
         gp.getNpc()[1] = new NPC_GivePotion(this.gp);
         gp.getNpc()[1].setWorldX(23 * TILE_SIZE);
-        gp.getNpc()[1].setWorldY(23 * TILE_SIZE);
+        gp.getNpc()[1].setWorldY(23 * TILE_SIZE);*/
+        gp.getNpc()[0] = new NPC_thief(this.gp);
+        gp.getNpc()[0].setWorldX(21 * TILE_SIZE);
+        gp.getNpc()[0].setWorldY(21 * TILE_SIZE);
     }
 
     public void setMonster() {

@@ -925,6 +925,6 @@ public class Entity {
     }
 
     public boolean inventoryEmpty() {
-        return false;
+        return true;
     }
 }

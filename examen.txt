@@ -62,4 +62,8 @@ J'ai du modifier la classe Collision car j'ai rencontré un bug sur la question 
 L'image de l'objet Z est un X est lorsque vous tuez le monstre M mais c'est bien un objet Z.
 
 # Question 5
-
+Je n'ai pas eu le temps de gérer le vol de l'inventaire. 
+	modified:   examen.txt
+	modified:   src/abstraction/Entity.java
+	modified:   src/abstraction/npc/NPC_thief.java
+	modified:   src/controller/AssetSetter.java

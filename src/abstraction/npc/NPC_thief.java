@@ -113,8 +113,8 @@ public class NPC_thief extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0] = "Have a good day sir.";
-        dialogues[1] = "Let me take care of your bag :)";
+        dialogues[0] = "Have a \ngood day sir.";
+        dialogues[1] = "Let me take \ncare of your bag :)";
     }
 
     public void speak() {
@@ -122,6 +122,7 @@ public class NPC_thief extends Entity {
             getGamePanel().getUi().setCurrentDialogue(getDialogues()[0]);
         } else {
             getGamePanel().getUi().setCurrentDialogue(getDialogues()[1]);
+
         }
     }
 }
